@@ -1,0 +1,7 @@
+sim_time_s,wall_ahead,wall_left,wall_front_right,wall_right,left_density,center_density,right_density,mean_right,target_visible,target_direction,left_velocity,right_velocity
+0.032,False,False,False,True,0.0,0.0,0.0,123.569,False,,3.0,3.0
+0.064,False,False,False,True,0.0,0.00267,0.0,123.553,False,,3.0,3.0
+0.096,True,False,False,True,0.0,0.0,0.0,123.499,False,,0.0,3.0
+0.128,True,False,False,True,0.0,0.0,0.0,123.574,False,,0.0,3.0
+0.16,True,False,False,True,0.0,0.00279,0.0,123.698,False,,0.0,3.0
+0.192,True,False,False,True,0.0,0.0,0.0,123.637,False,,0.0,3.0
