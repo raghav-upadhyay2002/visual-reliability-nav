@@ -230,7 +230,7 @@ print('Camera resolution front:', camera_front.getWidth(), 'x', camera_front.get
 print('Camera resolution left:', camera_left.getWidth(), 'x', camera_left.getHeight())
 print('Camera resolution right:', camera_right.getWidth(), 'x', camera_right.getHeight())
 
-log_dir = os.path.dirname(os.path.abspath(__file__))
+'''log_dir = os.path.dirname(os.path.abspath(__file__))
 log_filename = 'run_log_' + datetime.datetime.now().strftime('%Y%m%d_%H%M%S') + '.csv'
 log_path = os.path.join(log_dir, log_filename)
 log_file = open(log_path, 'w', newline='')
@@ -241,7 +241,7 @@ log_writer.writerow([
     'left_density', 'center_density', 'right_density', 'mean_right',
     'target_visible', 'target_direction',
     'left_velocity', 'right_velocity'
-])
+])'''
 
 
 
@@ -338,7 +338,7 @@ while robot.step(timestep) != -1:
     left_motor.setVelocity(left_velocity)
     right_motor.setVelocity(right_velocity)
 
-    log_writer.writerow([
+    '''log_writer.writerow([
         round(robot.getTime(), 3),
         wall_status['wall_ahead'], wall_status['wall_left'], wall_status['wall_front_right'],
         wall_status_right['wall_right'],
@@ -347,7 +347,7 @@ while robot.step(timestep) != -1:
         target_visible, target_direction,
         left_velocity, right_velocity
     ])
-    log_file.flush()
+    log_file.flush()'''
 
     # Visualize the Canny edge map used for the wall density calculation.
     cv2.imshow("Edges", wall_status['edges'])
@@ -369,5 +369,5 @@ while robot.step(timestep) != -1:
 
 # Close all preview windows once the control loop ends.
 cv2.destroyAllWindows()
-log_file.close()
+#log_file.close()
 
