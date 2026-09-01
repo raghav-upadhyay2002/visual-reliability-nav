@@ -30,6 +30,11 @@ Solid {
             translation -0.4 -0.4 0
             rotation 1 0 0 0
             floorSize 1 1
+            floorAppearance PBRAppearance {
+                baseColor 0.83 0.96 0.90
+                roughness 1
+                metalness 0
+            }
         }
 
 		Wall {
