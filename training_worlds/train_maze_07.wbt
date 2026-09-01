@@ -30,6 +30,9 @@ Solid {
             translation -0.4 -0.4 0
             rotation 1 0 0 0
             floorSize 1 1
+            wallAppearance Roughcast {
+                colorOverride 0.10 0.50 0.55
+            }
             floorAppearance PBRAppearance {
                 baseColor 0.82 0.95 0.95
                 roughness 1
@@ -43,7 +46,7 @@ Solid {
 			name "wall_0_0_e"
 			size 0.01 0.1 0.1
 			appearance Roughcast {
-				colorOverride 0 1 0
+				colorOverride 0.10 0.50 0.55
 			}
 		}
 
@@ -53,7 +56,7 @@ Solid {
 			name "wall_1_0_s"
 			size 0.1 0.01 0.1
 			appearance Roughcast {
-				colorOverride 1 0 0
+				colorOverride 0.10 0.50 0.55
 			}
 		}
 
@@ -63,7 +66,7 @@ Solid {
 			name "wall_3_0_e"
 			size 0.01 0.1 0.1
 			appearance Roughcast {
-				colorOverride 0 1 0
+				colorOverride 0.10 0.50 0.55
 			}
 		}
 
@@ -73,7 +76,7 @@ Solid {
 			name "wall_6_0_e"
 			size 0.01 0.1 0.1
 			appearance Roughcast {
-				colorOverride 0 1 0
+				colorOverride 0.10 0.50 0.55
 			}
 		}
 
@@ -83,7 +86,7 @@ Solid {
 			name "wall_0_1_s"
 			size 0.1 0.01 0.1
 			appearance Roughcast {
-				colorOverride 1 0 0
+				colorOverride 0.10 0.50 0.55
 			}
 		}
 
@@ -93,7 +96,7 @@ Solid {
 			name "wall_1_1_e"
 			size 0.01 0.1 0.1
 			appearance Roughcast {
-				colorOverride 0 1 0
+				colorOverride 0.10 0.50 0.55
 			}
 		}
 
@@ -103,7 +106,7 @@ Solid {
 			name "wall_2_1_e"
 			size 0.01 0.1 0.1
 			appearance Roughcast {
-				colorOverride 0 1 0
+				colorOverride 0.10 0.50 0.55
 			}
 		}
 
@@ -113,7 +116,7 @@ Solid {
 			name "wall_3_1_s"
 			size 0.1 0.01 0.1
 			appearance Roughcast {
-				colorOverride 1 0 0
+				colorOverride 0.10 0.50 0.55
 			}
 		}
 
@@ -123,7 +126,7 @@ Solid {
 			name "wall_4_1_s"
 			size 0.1 0.01 0.1
 			appearance Roughcast {
-				colorOverride 1 0 0
+				colorOverride 0.10 0.50 0.55
 			}
 		}
 
@@ -133,7 +136,7 @@ Solid {
 			name "wall_4_1_e"
 			size 0.01 0.1 0.1
 			appearance Roughcast {
-				colorOverride 0 1 0
+				colorOverride 0.10 0.50 0.55
 			}
 		}
 
@@ -143,7 +146,7 @@ Solid {
 			name "wall_5_1_e"
 			size 0.01 0.1 0.1
 			appearance Roughcast {
-				colorOverride 0 1 0
+				colorOverride 0.10 0.50 0.55
 			}
 		}
 
@@ -153,7 +156,7 @@ Solid {
 			name "wall_6_1_s"
 			size 0.1 0.01 0.1
 			appearance Roughcast {
-				colorOverride 1 0 0
+				colorOverride 0.10 0.50 0.55
 			}
 		}
 
@@ -163,7 +166,7 @@ Solid {
 			name "wall_7_1_s"
 			size 0.1 0.01 0.1
 			appearance Roughcast {
-				colorOverride 1 0 0
+				colorOverride 0.10 0.50 0.55
 			}
 		}
 
@@ -173,7 +176,7 @@ Solid {
 			name "wall_0_2_e"
 			size 0.01 0.1 0.1
 			appearance Roughcast {
-				colorOverride 0 1 0
+				colorOverride 0.10 0.50 0.55
 			}
 		}
 
@@ -183,7 +186,7 @@ Solid {
 			name "wall_1_2_e"
 			size 0.01 0.1 0.1
 			appearance Roughcast {
-				colorOverride 0 1 0
+				colorOverride 0.10 0.50 0.55
 			}
 		}
 
@@ -193,7 +196,7 @@ Solid {
 			name "wall_2_2_e"
 			size 0.01 0.1 0.1
 			appearance Roughcast {
-				colorOverride 0 1 0
+				colorOverride 0.10 0.50 0.55
 			}
 		}
 
@@ -203,7 +206,7 @@ Solid {
 			name "wall_4_2_e"
 			size 0.01 0.1 0.1
 			appearance Roughcast {
-				colorOverride 0 1 0
+				colorOverride 0.10 0.50 0.55
 			}
 		}
 
@@ -213,7 +216,7 @@ Solid {
 			name "wall_5_2_s"
 			size 0.1 0.01 0.1
 			appearance Roughcast {
-				colorOverride 1 0 0
+				colorOverride 0.10 0.50 0.55
 			}
 		}
 
@@ -223,7 +226,7 @@ Solid {
 			name "wall_6_2_s"
 			size 0.1 0.01 0.1
 			appearance Roughcast {
-				colorOverride 1 0 0
+				colorOverride 0.10 0.50 0.55
 			}
 		}
 
@@ -233,7 +236,7 @@ Solid {
 			name "wall_1_3_s"
 			size 0.1 0.01 0.1
 			appearance Roughcast {
-				colorOverride 1 0 0
+				colorOverride 0.10 0.50 0.55
 			}
 		}
 
@@ -243,7 +246,7 @@ Solid {
 			name "wall_1_3_e"
 			size 0.01 0.1 0.1
 			appearance Roughcast {
-				colorOverride 0 1 0
+				colorOverride 0.10 0.50 0.55
 			}
 		}
 
@@ -253,7 +256,7 @@ Solid {
 			name "wall_2_3_e"
 			size 0.01 0.1 0.1
 			appearance Roughcast {
-				colorOverride 0 1 0
+				colorOverride 0.10 0.50 0.55
 			}
 		}
 
@@ -263,7 +266,7 @@ Solid {
 			name "wall_3_3_e"
 			size 0.01 0.1 0.1
 			appearance Roughcast {
-				colorOverride 0 1 0
+				colorOverride 0.10 0.50 0.55
 			}
 		}
 
@@ -273,7 +276,7 @@ Solid {
 			name "wall_5_3_s"
 			size 0.1 0.01 0.1
 			appearance Roughcast {
-				colorOverride 1 0 0
+				colorOverride 0.10 0.50 0.55
 			}
 		}
 
@@ -283,7 +286,7 @@ Solid {
 			name "wall_6_3_s"
 			size 0.1 0.01 0.1
 			appearance Roughcast {
-				colorOverride 1 0 0
+				colorOverride 0.10 0.50 0.55
 			}
 		}
 
@@ -293,7 +296,7 @@ Solid {
 			name "wall_6_3_e"
 			size 0.01 0.1 0.1
 			appearance Roughcast {
-				colorOverride 0 1 0
+				colorOverride 0.10 0.50 0.55
 			}
 		}
 
@@ -303,7 +306,7 @@ Solid {
 			name "wall_0_4_s"
 			size 0.1 0.01 0.1
 			appearance Roughcast {
-				colorOverride 1 0 0
+				colorOverride 0.10 0.50 0.55
 			}
 		}
 
@@ -313,7 +316,7 @@ Solid {
 			name "wall_1_4_e"
 			size 0.01 0.1 0.1
 			appearance Roughcast {
-				colorOverride 0 1 0
+				colorOverride 0.10 0.50 0.55
 			}
 		}
 
@@ -323,7 +326,7 @@ Solid {
 			name "wall_2_4_s"
 			size 0.1 0.01 0.1
 			appearance Roughcast {
-				colorOverride 1 0 0
+				colorOverride 0.10 0.50 0.55
 			}
 		}
 
@@ -333,7 +336,7 @@ Solid {
 			name "wall_3_4_s"
 			size 0.1 0.01 0.1
 			appearance Roughcast {
-				colorOverride 1 0 0
+				colorOverride 0.10 0.50 0.55
 			}
 		}
 
@@ -343,7 +346,7 @@ Solid {
 			name "wall_3_4_e"
 			size 0.01 0.1 0.1
 			appearance Roughcast {
-				colorOverride 0 1 0
+				colorOverride 0.10 0.50 0.55
 			}
 		}
 
@@ -353,7 +356,7 @@ Solid {
 			name "wall_4_4_s"
 			size 0.1 0.01 0.1
 			appearance Roughcast {
-				colorOverride 1 0 0
+				colorOverride 0.10 0.50 0.55
 			}
 		}
 
@@ -363,7 +366,7 @@ Solid {
 			name "wall_4_4_e"
 			size 0.01 0.1 0.1
 			appearance Roughcast {
-				colorOverride 0 1 0
+				colorOverride 0.10 0.50 0.55
 			}
 		}
 
@@ -373,7 +376,7 @@ Solid {
 			name "wall_6_4_s"
 			size 0.1 0.01 0.1
 			appearance Roughcast {
-				colorOverride 1 0 0
+				colorOverride 0.10 0.50 0.55
 			}
 		}
 
@@ -383,7 +386,7 @@ Solid {
 			name "wall_0_5_e"
 			size 0.01 0.1 0.1
 			appearance Roughcast {
-				colorOverride 0 1 0
+				colorOverride 0.10 0.50 0.55
 			}
 		}
 
@@ -393,7 +396,7 @@ Solid {
 			name "wall_1_5_e"
 			size 0.01 0.1 0.1
 			appearance Roughcast {
-				colorOverride 0 1 0
+				colorOverride 0.10 0.50 0.55
 			}
 		}
 
@@ -403,7 +406,7 @@ Solid {
 			name "wall_3_5_s"
 			size 0.1 0.01 0.1
 			appearance Roughcast {
-				colorOverride 1 0 0
+				colorOverride 0.10 0.50 0.55
 			}
 		}
 
@@ -413,7 +416,7 @@ Solid {
 			name "wall_4_5_s"
 			size 0.1 0.01 0.1
 			appearance Roughcast {
-				colorOverride 1 0 0
+				colorOverride 0.10 0.50 0.55
 			}
 		}
 
@@ -423,7 +426,7 @@ Solid {
 			name "wall_5_5_s"
 			size 0.1 0.01 0.1
 			appearance Roughcast {
-				colorOverride 1 0 0
+				colorOverride 0.10 0.50 0.55
 			}
 		}
 
@@ -433,7 +436,7 @@ Solid {
 			name "wall_5_5_e"
 			size 0.01 0.1 0.1
 			appearance Roughcast {
-				colorOverride 0 1 0
+				colorOverride 0.10 0.50 0.55
 			}
 		}
 
@@ -443,7 +446,7 @@ Solid {
 			name "wall_7_5_s"
 			size 0.1 0.01 0.1
 			appearance Roughcast {
-				colorOverride 1 0 0
+				colorOverride 0.10 0.50 0.55
 			}
 		}
 
@@ -453,7 +456,7 @@ Solid {
 			name "wall_1_6_s"
 			size 0.1 0.01 0.1
 			appearance Roughcast {
-				colorOverride 1 0 0
+				colorOverride 0.10 0.50 0.55
 			}
 		}
 
@@ -463,7 +466,7 @@ Solid {
 			name "wall_1_6_e"
 			size 0.01 0.1 0.1
 			appearance Roughcast {
-				colorOverride 0 1 0
+				colorOverride 0.10 0.50 0.55
 			}
 		}
 
@@ -473,7 +476,7 @@ Solid {
 			name "wall_2_6_e"
 			size 0.01 0.1 0.1
 			appearance Roughcast {
-				colorOverride 0 1 0
+				colorOverride 0.10 0.50 0.55
 			}
 		}
 
@@ -483,7 +486,7 @@ Solid {
 			name "wall_4_6_s"
 			size 0.1 0.01 0.1
 			appearance Roughcast {
-				colorOverride 1 0 0
+				colorOverride 0.10 0.50 0.55
 			}
 		}
 
@@ -493,7 +496,7 @@ Solid {
 			name "wall_5_6_s"
 			size 0.1 0.01 0.1
 			appearance Roughcast {
-				colorOverride 1 0 0
+				colorOverride 0.10 0.50 0.55
 			}
 		}
 
@@ -503,7 +506,7 @@ Solid {
 			name "wall_5_6_e"
 			size 0.01 0.1 0.1
 			appearance Roughcast {
-				colorOverride 0 1 0
+				colorOverride 0.10 0.50 0.55
 			}
 		}
 
@@ -513,7 +516,7 @@ Solid {
 			name "wall_6_6_e"
 			size 0.01 0.1 0.1
 			appearance Roughcast {
-				colorOverride 0 1 0
+				colorOverride 0.10 0.50 0.55
 			}
 		}
 
@@ -523,7 +526,7 @@ Solid {
 			name "wall_2_7_e"
 			size 0.01 0.1 0.1
 			appearance Roughcast {
-				colorOverride 0 1 0
+				colorOverride 0.10 0.50 0.55
 			}
 		}
 	]
