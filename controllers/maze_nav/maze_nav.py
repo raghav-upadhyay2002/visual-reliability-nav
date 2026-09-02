@@ -2,6 +2,7 @@ from controllers import Robot
 import numpy as np 
 import cv2
 import csv
+from classic_cv import detect_walls_countours, detect_walls_lines
 
 robot = Robot()
 timestep= int(robot.getBasicTimeStep())
