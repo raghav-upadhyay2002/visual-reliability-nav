@@ -1,4 +1,4 @@
-from controllers import Robot
+from controller import Robot
 import numpy as np 
 import cv2
 import csv
