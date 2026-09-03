@@ -3,7 +3,6 @@ EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/project
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/floors/protos/RectangleArena.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/apartment_structure/protos/Wall.proto"
-EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/Roughcast.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/robots/gctronic/e-puck/protos/E-puck.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/balls/protos/Ball.proto"
 WorldInfo {
@@ -14,7 +13,7 @@ info [
 }
 Viewpoint {
     orientation 0 2 0 1.52
-    position -0.6000000000000001 -0.4 1.6
+    position -0.9 -0.6 2.4
     follow "e-puck"
 }
 TexturedBackground {
@@ -27,11 +26,13 @@ Solid {
     children [
 
         RectangleArena {
-            translation -0.4 -0.4 0
+            translation -0.6 -0.6 0
             rotation 1 0 0 0
-            floorSize 1 1
-            wallAppearance Roughcast {
-                colorOverride 0.10 0.50 0.55
+            floorSize 1.2 1.2
+            wallAppearance PBRAppearance {
+                baseColor 0.1 0.5 0.55
+                roughness 1
+                metalness 0
             }
             floorAppearance PBRAppearance {
                 baseColor 0.82 0.95 0.95
@@ -41,498 +42,596 @@ Solid {
         }
 
 		Wall {
-			translation  -0.1 -0.75  0
+			translation  -0.15 -1.125  0
 			rotation 1 0 0 0
 			name "wall_0_0_e"
-			size 0.01 0.1 0.1
-			appearance Roughcast {
-				colorOverride 0.10 0.50 0.55
+			size 0.01 0.15 0.1
+			appearance PBRAppearance {
+				baseColor 0.1 0.5 0.55
+				roughness 1
+				metalness 0
 			}
 		}
 
 		Wall {
-			translation -0.15000000000000002 -0.7000000000000001 0
-			rotation 1 0 0 0
-			name "wall_1_0_s"
-			size 0.1 0.01 0.1
-			appearance Roughcast {
-				colorOverride 0.10 0.50 0.55
-			}
-		}
-
-		Wall {
-			translation  -0.4 -0.75  0
-			rotation 1 0 0 0
-			name "wall_3_0_e"
-			size 0.01 0.1 0.1
-			appearance Roughcast {
-				colorOverride 0.10 0.50 0.55
-			}
-		}
-
-		Wall {
-			translation  -0.7000000000000001 -0.75  0
-			rotation 1 0 0 0
-			name "wall_6_0_e"
-			size 0.01 0.1 0.1
-			appearance Roughcast {
-				colorOverride 0.10 0.50 0.55
-			}
-		}
-
-		Wall {
-			translation -0.05 -0.6000000000000001 0
-			rotation 1 0 0 0
-			name "wall_0_1_s"
-			size 0.1 0.01 0.1
-			appearance Roughcast {
-				colorOverride 0.10 0.50 0.55
-			}
-		}
-
-		Wall {
-			translation  -0.2 -0.65  0
-			rotation 1 0 0 0
-			name "wall_1_1_e"
-			size 0.01 0.1 0.1
-			appearance Roughcast {
-				colorOverride 0.10 0.50 0.55
-			}
-		}
-
-		Wall {
-			translation  -0.30000000000000004 -0.65  0
-			rotation 1 0 0 0
-			name "wall_2_1_e"
-			size 0.01 0.1 0.1
-			appearance Roughcast {
-				colorOverride 0.10 0.50 0.55
-			}
-		}
-
-		Wall {
-			translation -0.35000000000000003 -0.6000000000000001 0
-			rotation 1 0 0 0
-			name "wall_3_1_s"
-			size 0.1 0.01 0.1
-			appearance Roughcast {
-				colorOverride 0.10 0.50 0.55
-			}
-		}
-
-		Wall {
-			translation -0.45 -0.6000000000000001 0
-			rotation 1 0 0 0
-			name "wall_4_1_s"
-			size 0.1 0.01 0.1
-			appearance Roughcast {
-				colorOverride 0.10 0.50 0.55
-			}
-		}
-
-		Wall {
-			translation  -0.5 -0.65  0
-			rotation 1 0 0 0
-			name "wall_4_1_e"
-			size 0.01 0.1 0.1
-			appearance Roughcast {
-				colorOverride 0.10 0.50 0.55
-			}
-		}
-
-		Wall {
-			translation  -0.6 -0.65  0
-			rotation 1 0 0 0
-			name "wall_5_1_e"
-			size 0.01 0.1 0.1
-			appearance Roughcast {
-				colorOverride 0.10 0.50 0.55
-			}
-		}
-
-		Wall {
-			translation -0.6500000000000001 -0.6000000000000001 0
-			rotation 1 0 0 0
-			name "wall_6_1_s"
-			size 0.1 0.01 0.1
-			appearance Roughcast {
-				colorOverride 0.10 0.50 0.55
-			}
-		}
-
-		Wall {
-			translation -0.7500000000000001 -0.6000000000000001 0
-			rotation 1 0 0 0
-			name "wall_7_1_s"
-			size 0.1 0.01 0.1
-			appearance Roughcast {
-				colorOverride 0.10 0.50 0.55
-			}
-		}
-
-		Wall {
-			translation  -0.1 -0.55  0
+			translation  -0.15 -0.825  0
 			rotation 1 0 0 0
 			name "wall_0_2_e"
-			size 0.01 0.1 0.1
-			appearance Roughcast {
-				colorOverride 0.10 0.50 0.55
+			size 0.01 0.15 0.1
+			appearance PBRAppearance {
+				baseColor 0.1 0.5 0.55
+				roughness 1
+				metalness 0
 			}
 		}
 
 		Wall {
-			translation  -0.2 -0.55  0
-			rotation 1 0 0 0
-			name "wall_1_2_e"
-			size 0.01 0.1 0.1
-			appearance Roughcast {
-				colorOverride 0.10 0.50 0.55
-			}
-		}
-
-		Wall {
-			translation  -0.30000000000000004 -0.55  0
-			rotation 1 0 0 0
-			name "wall_2_2_e"
-			size 0.01 0.1 0.1
-			appearance Roughcast {
-				colorOverride 0.10 0.50 0.55
-			}
-		}
-
-		Wall {
-			translation  -0.5 -0.55  0
-			rotation 1 0 0 0
-			name "wall_4_2_e"
-			size 0.01 0.1 0.1
-			appearance Roughcast {
-				colorOverride 0.10 0.50 0.55
-			}
-		}
-
-		Wall {
-			translation -0.55 -0.5000000000000001 0
-			rotation 1 0 0 0
-			name "wall_5_2_s"
-			size 0.1 0.01 0.1
-			appearance Roughcast {
-				colorOverride 0.10 0.50 0.55
-			}
-		}
-
-		Wall {
-			translation -0.6500000000000001 -0.5000000000000001 0
-			rotation 1 0 0 0
-			name "wall_6_2_s"
-			size 0.1 0.01 0.1
-			appearance Roughcast {
-				colorOverride 0.10 0.50 0.55
-			}
-		}
-
-		Wall {
-			translation -0.15000000000000002 -0.4 0
-			rotation 1 0 0 0
-			name "wall_1_3_s"
-			size 0.1 0.01 0.1
-			appearance Roughcast {
-				colorOverride 0.10 0.50 0.55
-			}
-		}
-
-		Wall {
-			translation  -0.2 -0.45  0
-			rotation 1 0 0 0
-			name "wall_1_3_e"
-			size 0.01 0.1 0.1
-			appearance Roughcast {
-				colorOverride 0.10 0.50 0.55
-			}
-		}
-
-		Wall {
-			translation  -0.30000000000000004 -0.45  0
-			rotation 1 0 0 0
-			name "wall_2_3_e"
-			size 0.01 0.1 0.1
-			appearance Roughcast {
-				colorOverride 0.10 0.50 0.55
-			}
-		}
-
-		Wall {
-			translation  -0.4 -0.45  0
-			rotation 1 0 0 0
-			name "wall_3_3_e"
-			size 0.01 0.1 0.1
-			appearance Roughcast {
-				colorOverride 0.10 0.50 0.55
-			}
-		}
-
-		Wall {
-			translation -0.55 -0.4 0
-			rotation 1 0 0 0
-			name "wall_5_3_s"
-			size 0.1 0.01 0.1
-			appearance Roughcast {
-				colorOverride 0.10 0.50 0.55
-			}
-		}
-
-		Wall {
-			translation -0.6500000000000001 -0.4 0
-			rotation 1 0 0 0
-			name "wall_6_3_s"
-			size 0.1 0.01 0.1
-			appearance Roughcast {
-				colorOverride 0.10 0.50 0.55
-			}
-		}
-
-		Wall {
-			translation  -0.7000000000000001 -0.45  0
-			rotation 1 0 0 0
-			name "wall_6_3_e"
-			size 0.01 0.1 0.1
-			appearance Roughcast {
-				colorOverride 0.10 0.50 0.55
-			}
-		}
-
-		Wall {
-			translation -0.05 -0.30000000000000004 0
-			rotation 1 0 0 0
-			name "wall_0_4_s"
-			size 0.1 0.01 0.1
-			appearance Roughcast {
-				colorOverride 0.10 0.50 0.55
-			}
-		}
-
-		Wall {
-			translation  -0.2 -0.35000000000000003  0
-			rotation 1 0 0 0
-			name "wall_1_4_e"
-			size 0.01 0.1 0.1
-			appearance Roughcast {
-				colorOverride 0.10 0.50 0.55
-			}
-		}
-
-		Wall {
-			translation -0.25 -0.30000000000000004 0
-			rotation 1 0 0 0
-			name "wall_2_4_s"
-			size 0.1 0.01 0.1
-			appearance Roughcast {
-				colorOverride 0.10 0.50 0.55
-			}
-		}
-
-		Wall {
-			translation -0.35000000000000003 -0.30000000000000004 0
-			rotation 1 0 0 0
-			name "wall_3_4_s"
-			size 0.1 0.01 0.1
-			appearance Roughcast {
-				colorOverride 0.10 0.50 0.55
-			}
-		}
-
-		Wall {
-			translation  -0.4 -0.35000000000000003  0
-			rotation 1 0 0 0
-			name "wall_3_4_e"
-			size 0.01 0.1 0.1
-			appearance Roughcast {
-				colorOverride 0.10 0.50 0.55
-			}
-		}
-
-		Wall {
-			translation -0.45 -0.30000000000000004 0
-			rotation 1 0 0 0
-			name "wall_4_4_s"
-			size 0.1 0.01 0.1
-			appearance Roughcast {
-				colorOverride 0.10 0.50 0.55
-			}
-		}
-
-		Wall {
-			translation  -0.5 -0.35000000000000003  0
-			rotation 1 0 0 0
-			name "wall_4_4_e"
-			size 0.01 0.1 0.1
-			appearance Roughcast {
-				colorOverride 0.10 0.50 0.55
-			}
-		}
-
-		Wall {
-			translation -0.6500000000000001 -0.30000000000000004 0
-			rotation 1 0 0 0
-			name "wall_6_4_s"
-			size 0.1 0.01 0.1
-			appearance Roughcast {
-				colorOverride 0.10 0.50 0.55
-			}
-		}
-
-		Wall {
-			translation  -0.1 -0.25000000000000006  0
+			translation  -0.15 -0.375  0
 			rotation 1 0 0 0
 			name "wall_0_5_e"
-			size 0.01 0.1 0.1
-			appearance Roughcast {
-				colorOverride 0.10 0.50 0.55
+			size 0.01 0.15 0.1
+			appearance PBRAppearance {
+				baseColor 0.1 0.5 0.55
+				roughness 1
+				metalness 0
 			}
 		}
 
 		Wall {
-			translation  -0.2 -0.25000000000000006  0
+			translation  -0.3 -0.975  0
+			rotation 1 0 0 0
+			name "wall_1_1_e"
+			size 0.01 0.15 0.1
+			appearance PBRAppearance {
+				baseColor 0.1 0.5 0.55
+				roughness 1
+				metalness 0
+			}
+		}
+
+		Wall {
+			translation  -0.3 -0.825  0
+			rotation 1 0 0 0
+			name "wall_1_2_e"
+			size 0.01 0.15 0.1
+			appearance PBRAppearance {
+				baseColor 0.1 0.5 0.55
+				roughness 1
+				metalness 0
+			}
+		}
+
+		Wall {
+			translation  -0.3 -0.6749999999999999  0
+			rotation 1 0 0 0
+			name "wall_1_3_e"
+			size 0.01 0.15 0.1
+			appearance PBRAppearance {
+				baseColor 0.1 0.5 0.55
+				roughness 1
+				metalness 0
+			}
+		}
+
+		Wall {
+			translation  -0.3 -0.525  0
+			rotation 1 0 0 0
+			name "wall_1_4_e"
+			size 0.01 0.15 0.1
+			appearance PBRAppearance {
+				baseColor 0.1 0.5 0.55
+				roughness 1
+				metalness 0
+			}
+		}
+
+		Wall {
+			translation  -0.3 -0.375  0
 			rotation 1 0 0 0
 			name "wall_1_5_e"
-			size 0.01 0.1 0.1
-			appearance Roughcast {
-				colorOverride 0.10 0.50 0.55
+			size 0.01 0.15 0.1
+			appearance PBRAppearance {
+				baseColor 0.1 0.5 0.55
+				roughness 1
+				metalness 0
 			}
 		}
 
 		Wall {
-			translation -0.35000000000000003 -0.20000000000000004 0
-			rotation 1 0 0 0
-			name "wall_3_5_s"
-			size 0.1 0.01 0.1
-			appearance Roughcast {
-				colorOverride 0.10 0.50 0.55
-			}
-		}
-
-		Wall {
-			translation -0.45 -0.20000000000000004 0
-			rotation 1 0 0 0
-			name "wall_4_5_s"
-			size 0.1 0.01 0.1
-			appearance Roughcast {
-				colorOverride 0.10 0.50 0.55
-			}
-		}
-
-		Wall {
-			translation -0.55 -0.20000000000000004 0
-			rotation 1 0 0 0
-			name "wall_5_5_s"
-			size 0.1 0.01 0.1
-			appearance Roughcast {
-				colorOverride 0.10 0.50 0.55
-			}
-		}
-
-		Wall {
-			translation  -0.6 -0.25000000000000006  0
-			rotation 1 0 0 0
-			name "wall_5_5_e"
-			size 0.01 0.1 0.1
-			appearance Roughcast {
-				colorOverride 0.10 0.50 0.55
-			}
-		}
-
-		Wall {
-			translation -0.7500000000000001 -0.20000000000000004 0
-			rotation 1 0 0 0
-			name "wall_7_5_s"
-			size 0.1 0.01 0.1
-			appearance Roughcast {
-				colorOverride 0.10 0.50 0.55
-			}
-		}
-
-		Wall {
-			translation -0.15000000000000002 -0.1 0
-			rotation 1 0 0 0
-			name "wall_1_6_s"
-			size 0.1 0.01 0.1
-			appearance Roughcast {
-				colorOverride 0.10 0.50 0.55
-			}
-		}
-
-		Wall {
-			translation  -0.2 -0.15000000000000002  0
+			translation  -0.3 -0.22499999999999998  0
 			rotation 1 0 0 0
 			name "wall_1_6_e"
-			size 0.01 0.1 0.1
-			appearance Roughcast {
-				colorOverride 0.10 0.50 0.55
+			size 0.01 0.15 0.1
+			appearance PBRAppearance {
+				baseColor 0.1 0.5 0.55
+				roughness 1
+				metalness 0
 			}
 		}
 
 		Wall {
-			translation  -0.30000000000000004 -0.15000000000000002  0
+			translation  -0.44999999999999996 -0.975  0
+			rotation 1 0 0 0
+			name "wall_2_1_e"
+			size 0.01 0.15 0.1
+			appearance PBRAppearance {
+				baseColor 0.1 0.5 0.55
+				roughness 1
+				metalness 0
+			}
+		}
+
+		Wall {
+			translation  -0.44999999999999996 -0.825  0
+			rotation 1 0 0 0
+			name "wall_2_2_e"
+			size 0.01 0.15 0.1
+			appearance PBRAppearance {
+				baseColor 0.1 0.5 0.55
+				roughness 1
+				metalness 0
+			}
+		}
+
+		Wall {
+			translation  -0.44999999999999996 -0.6749999999999999  0
+			rotation 1 0 0 0
+			name "wall_2_3_e"
+			size 0.01 0.15 0.1
+			appearance PBRAppearance {
+				baseColor 0.1 0.5 0.55
+				roughness 1
+				metalness 0
+			}
+		}
+
+		Wall {
+			translation  -0.44999999999999996 -0.22499999999999998  0
 			rotation 1 0 0 0
 			name "wall_2_6_e"
-			size 0.01 0.1 0.1
-			appearance Roughcast {
-				colorOverride 0.10 0.50 0.55
+			size 0.01 0.15 0.1
+			appearance PBRAppearance {
+				baseColor 0.1 0.5 0.55
+				roughness 1
+				metalness 0
 			}
 		}
 
 		Wall {
-			translation -0.45 -0.1 0
-			rotation 1 0 0 0
-			name "wall_4_6_s"
-			size 0.1 0.01 0.1
-			appearance Roughcast {
-				colorOverride 0.10 0.50 0.55
-			}
-		}
-
-		Wall {
-			translation -0.55 -0.1 0
-			rotation 1 0 0 0
-			name "wall_5_6_s"
-			size 0.1 0.01 0.1
-			appearance Roughcast {
-				colorOverride 0.10 0.50 0.55
-			}
-		}
-
-		Wall {
-			translation  -0.6 -0.15000000000000002  0
-			rotation 1 0 0 0
-			name "wall_5_6_e"
-			size 0.01 0.1 0.1
-			appearance Roughcast {
-				colorOverride 0.10 0.50 0.55
-			}
-		}
-
-		Wall {
-			translation  -0.7000000000000001 -0.15000000000000002  0
-			rotation 1 0 0 0
-			name "wall_6_6_e"
-			size 0.01 0.1 0.1
-			appearance Roughcast {
-				colorOverride 0.10 0.50 0.55
-			}
-		}
-
-		Wall {
-			translation  -0.30000000000000004 -0.05  0
+			translation  -0.44999999999999996 -0.07499999999999996  0
 			rotation 1 0 0 0
 			name "wall_2_7_e"
-			size 0.01 0.1 0.1
-			appearance Roughcast {
-				colorOverride 0.10 0.50 0.55
+			size 0.01 0.15 0.1
+			appearance PBRAppearance {
+				baseColor 0.1 0.5 0.55
+				roughness 1
+				metalness 0
+			}
+		}
+
+		Wall {
+			translation  -0.6 -1.125  0
+			rotation 1 0 0 0
+			name "wall_3_0_e"
+			size 0.01 0.15 0.1
+			appearance PBRAppearance {
+				baseColor 0.1 0.5 0.55
+				roughness 1
+				metalness 0
+			}
+		}
+
+		Wall {
+			translation  -0.6 -0.6749999999999999  0
+			rotation 1 0 0 0
+			name "wall_3_3_e"
+			size 0.01 0.15 0.1
+			appearance PBRAppearance {
+				baseColor 0.1 0.5 0.55
+				roughness 1
+				metalness 0
+			}
+		}
+
+		Wall {
+			translation  -0.6 -0.525  0
+			rotation 1 0 0 0
+			name "wall_3_4_e"
+			size 0.01 0.15 0.1
+			appearance PBRAppearance {
+				baseColor 0.1 0.5 0.55
+				roughness 1
+				metalness 0
+			}
+		}
+
+		Wall {
+			translation  -0.75 -0.975  0
+			rotation 1 0 0 0
+			name "wall_4_1_e"
+			size 0.01 0.15 0.1
+			appearance PBRAppearance {
+				baseColor 0.1 0.5 0.55
+				roughness 1
+				metalness 0
+			}
+		}
+
+		Wall {
+			translation  -0.75 -0.825  0
+			rotation 1 0 0 0
+			name "wall_4_2_e"
+			size 0.01 0.15 0.1
+			appearance PBRAppearance {
+				baseColor 0.1 0.5 0.55
+				roughness 1
+				metalness 0
+			}
+		}
+
+		Wall {
+			translation  -0.75 -0.525  0
+			rotation 1 0 0 0
+			name "wall_4_4_e"
+			size 0.01 0.15 0.1
+			appearance PBRAppearance {
+				baseColor 0.1 0.5 0.55
+				roughness 1
+				metalness 0
+			}
+		}
+
+		Wall {
+			translation  -0.8999999999999999 -0.975  0
+			rotation 1 0 0 0
+			name "wall_5_1_e"
+			size 0.01 0.15 0.1
+			appearance PBRAppearance {
+				baseColor 0.1 0.5 0.55
+				roughness 1
+				metalness 0
+			}
+		}
+
+		Wall {
+			translation  -0.8999999999999999 -0.375  0
+			rotation 1 0 0 0
+			name "wall_5_5_e"
+			size 0.01 0.15 0.1
+			appearance PBRAppearance {
+				baseColor 0.1 0.5 0.55
+				roughness 1
+				metalness 0
+			}
+		}
+
+		Wall {
+			translation  -0.8999999999999999 -0.22499999999999998  0
+			rotation 1 0 0 0
+			name "wall_5_6_e"
+			size 0.01 0.15 0.1
+			appearance PBRAppearance {
+				baseColor 0.1 0.5 0.55
+				roughness 1
+				metalness 0
+			}
+		}
+
+		Wall {
+			translation  -1.05 -1.125  0
+			rotation 1 0 0 0
+			name "wall_6_0_e"
+			size 0.01 0.15 0.1
+			appearance PBRAppearance {
+				baseColor 0.1 0.5 0.55
+				roughness 1
+				metalness 0
+			}
+		}
+
+		Wall {
+			translation  -1.05 -0.6749999999999999  0
+			rotation 1 0 0 0
+			name "wall_6_3_e"
+			size 0.01 0.15 0.1
+			appearance PBRAppearance {
+				baseColor 0.1 0.5 0.55
+				roughness 1
+				metalness 0
+			}
+		}
+
+		Wall {
+			translation  -1.05 -0.22499999999999998  0
+			rotation 1 0 0 0
+			name "wall_6_6_e"
+			size 0.01 0.15 0.1
+			appearance PBRAppearance {
+				baseColor 0.1 0.5 0.55
+				roughness 1
+				metalness 0
+			}
+		}
+
+		Wall {
+			translation  -0.075 -0.8999999999999999  0
+			rotation 1 0 0 0
+			name "wall_0_1_s"
+			size 0.15 0.01 0.1
+			appearance PBRAppearance {
+				baseColor 0.1 0.5 0.55
+				roughness 1
+				metalness 0
+			}
+		}
+
+		Wall {
+			translation  -0.075 -0.44999999999999996  0
+			rotation 1 0 0 0
+			name "wall_0_4_s"
+			size 0.15 0.01 0.1
+			appearance PBRAppearance {
+				baseColor 0.1 0.5 0.55
+				roughness 1
+				metalness 0
+			}
+		}
+
+		Wall {
+			translation  -0.22499999999999998 -1.05  0
+			rotation 1 0 0 0
+			name "wall_1_0_s"
+			size 0.15 0.01 0.1
+			appearance PBRAppearance {
+				baseColor 0.1 0.5 0.55
+				roughness 1
+				metalness 0
+			}
+		}
+
+		Wall {
+			translation  -0.22499999999999998 -0.6  0
+			rotation 1 0 0 0
+			name "wall_1_3_s"
+			size 0.15 0.01 0.1
+			appearance PBRAppearance {
+				baseColor 0.1 0.5 0.55
+				roughness 1
+				metalness 0
+			}
+		}
+
+		Wall {
+			translation  -0.22499999999999998 -0.1499999999999999  0
+			rotation 1 0 0 0
+			name "wall_1_6_s"
+			size 0.15 0.01 0.1
+			appearance PBRAppearance {
+				baseColor 0.1 0.5 0.55
+				roughness 1
+				metalness 0
+			}
+		}
+
+		Wall {
+			translation  -0.375 -0.44999999999999996  0
+			rotation 1 0 0 0
+			name "wall_2_4_s"
+			size 0.15 0.01 0.1
+			appearance PBRAppearance {
+				baseColor 0.1 0.5 0.55
+				roughness 1
+				metalness 0
+			}
+		}
+
+		Wall {
+			translation  -0.525 -0.8999999999999999  0
+			rotation 1 0 0 0
+			name "wall_3_1_s"
+			size 0.15 0.01 0.1
+			appearance PBRAppearance {
+				baseColor 0.1 0.5 0.55
+				roughness 1
+				metalness 0
+			}
+		}
+
+		Wall {
+			translation  -0.525 -0.44999999999999996  0
+			rotation 1 0 0 0
+			name "wall_3_4_s"
+			size 0.15 0.01 0.1
+			appearance PBRAppearance {
+				baseColor 0.1 0.5 0.55
+				roughness 1
+				metalness 0
+			}
+		}
+
+		Wall {
+			translation  -0.525 -0.30000000000000004  0
+			rotation 1 0 0 0
+			name "wall_3_5_s"
+			size 0.15 0.01 0.1
+			appearance PBRAppearance {
+				baseColor 0.1 0.5 0.55
+				roughness 1
+				metalness 0
+			}
+		}
+
+		Wall {
+			translation  -0.6749999999999999 -0.8999999999999999  0
+			rotation 1 0 0 0
+			name "wall_4_1_s"
+			size 0.15 0.01 0.1
+			appearance PBRAppearance {
+				baseColor 0.1 0.5 0.55
+				roughness 1
+				metalness 0
+			}
+		}
+
+		Wall {
+			translation  -0.6749999999999999 -0.44999999999999996  0
+			rotation 1 0 0 0
+			name "wall_4_4_s"
+			size 0.15 0.01 0.1
+			appearance PBRAppearance {
+				baseColor 0.1 0.5 0.55
+				roughness 1
+				metalness 0
+			}
+		}
+
+		Wall {
+			translation  -0.6749999999999999 -0.30000000000000004  0
+			rotation 1 0 0 0
+			name "wall_4_5_s"
+			size 0.15 0.01 0.1
+			appearance PBRAppearance {
+				baseColor 0.1 0.5 0.55
+				roughness 1
+				metalness 0
+			}
+		}
+
+		Wall {
+			translation  -0.6749999999999999 -0.1499999999999999  0
+			rotation 1 0 0 0
+			name "wall_4_6_s"
+			size 0.15 0.01 0.1
+			appearance PBRAppearance {
+				baseColor 0.1 0.5 0.55
+				roughness 1
+				metalness 0
+			}
+		}
+
+		Wall {
+			translation  -0.825 -0.75  0
+			rotation 1 0 0 0
+			name "wall_5_2_s"
+			size 0.15 0.01 0.1
+			appearance PBRAppearance {
+				baseColor 0.1 0.5 0.55
+				roughness 1
+				metalness 0
+			}
+		}
+
+		Wall {
+			translation  -0.825 -0.6  0
+			rotation 1 0 0 0
+			name "wall_5_3_s"
+			size 0.15 0.01 0.1
+			appearance PBRAppearance {
+				baseColor 0.1 0.5 0.55
+				roughness 1
+				metalness 0
+			}
+		}
+
+		Wall {
+			translation  -0.825 -0.30000000000000004  0
+			rotation 1 0 0 0
+			name "wall_5_5_s"
+			size 0.15 0.01 0.1
+			appearance PBRAppearance {
+				baseColor 0.1 0.5 0.55
+				roughness 1
+				metalness 0
+			}
+		}
+
+		Wall {
+			translation  -0.825 -0.1499999999999999  0
+			rotation 1 0 0 0
+			name "wall_5_6_s"
+			size 0.15 0.01 0.1
+			appearance PBRAppearance {
+				baseColor 0.1 0.5 0.55
+				roughness 1
+				metalness 0
+			}
+		}
+
+		Wall {
+			translation  -0.975 -0.8999999999999999  0
+			rotation 1 0 0 0
+			name "wall_6_1_s"
+			size 0.15 0.01 0.1
+			appearance PBRAppearance {
+				baseColor 0.1 0.5 0.55
+				roughness 1
+				metalness 0
+			}
+		}
+
+		Wall {
+			translation  -0.975 -0.75  0
+			rotation 1 0 0 0
+			name "wall_6_2_s"
+			size 0.15 0.01 0.1
+			appearance PBRAppearance {
+				baseColor 0.1 0.5 0.55
+				roughness 1
+				metalness 0
+			}
+		}
+
+		Wall {
+			translation  -0.975 -0.6  0
+			rotation 1 0 0 0
+			name "wall_6_3_s"
+			size 0.15 0.01 0.1
+			appearance PBRAppearance {
+				baseColor 0.1 0.5 0.55
+				roughness 1
+				metalness 0
+			}
+		}
+
+		Wall {
+			translation  -0.975 -0.44999999999999996  0
+			rotation 1 0 0 0
+			name "wall_6_4_s"
+			size 0.15 0.01 0.1
+			appearance PBRAppearance {
+				baseColor 0.1 0.5 0.55
+				roughness 1
+				metalness 0
+			}
+		}
+
+		Wall {
+			translation  -1.125 -0.8999999999999999  0
+			rotation 1 0 0 0
+			name "wall_7_1_s"
+			size 0.15 0.01 0.1
+			appearance PBRAppearance {
+				baseColor 0.1 0.5 0.55
+				roughness 1
+				metalness 0
+			}
+		}
+
+		Wall {
+			translation  -1.125 -0.30000000000000004  0
+			rotation 1 0 0 0
+			name "wall_7_5_s"
+			size 0.15 0.01 0.1
+			appearance PBRAppearance {
+				baseColor 0.1 0.5 0.55
+				roughness 1
+				metalness 0
 			}
 		}
 	]
 }
 E-puck {
-  translation -0.35000000000000003 -0.65 0.0248092
+  translation -0.525 -0.975 0.0248092
   rotation 0 0 1 4.71239
   controller "maze_nav"
   camera_width 256
@@ -557,6 +656,6 @@ E-puck {
   ]
 }
 Ball {
-  translation -0.05 -0.15000000000000002 0.030379
+  translation -0.075 -0.22499999999999998 0.030379
   color 1 0 0
 }
