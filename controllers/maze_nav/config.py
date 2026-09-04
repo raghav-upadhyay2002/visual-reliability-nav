@@ -7,11 +7,13 @@ BLUR_SIZE = 9
 # fed into the navigation logic). Starting values, not yet empirically tuned
 # against a real run:
 #   - TARGET_RADIUS: meters from the target center that counts as "reached".
-#     0.08 is a bit over half of what was a 0.15m grid cell; cells are now
-#     0.5m (see tools/generate_maze_world.py DEFAULT_CELL) so this is a
-#     smaller fraction of a cell than originally tuned, but still a
-#     reasonable "reached" radius -- not yet re-validated against a real run
-#     at the new scale.
+#     Raised 0.08 -> 0.1 after a real run (run_log_20260904_150723.csv) showed
+#     the target Ball's own physical radius trips the ps-sensor collision
+#     check (dist_to_target=0.0823, just above the old 0.08) one frame before
+#     dist_to_target would have crossed the threshold -- the robot had
+#     genuinely reached the target but the trial logged "collided" instead
+#     of "success". 0.1 clears that race with real margin (the same run's
+#     dist_to_target was already 0.0881-0.0919 several frames earlier).
 #   - COLLISION_THRESHOLD: e-puck ps0-ps7 raw units past which a wall/obstacle
 #     is considered touching. This proto ships no documented lookup table.
 #     80 was a pure guess and turned out to sit INSIDE the sensor noise floor
@@ -28,7 +30,7 @@ BLUR_SIZE = 9
 #     physical distance to cover at the same WHEEL_SPEED); not yet confirmed
 #     this is enough headroom for the longest paths on the biggest (10x10)
 #     mazes.
-TARGET_RADIUS = 0.08
+TARGET_RADIUS = 0.1
 COLLISION_THRESHOLD = 250
 MAX_TRIAL_SECONDS = 300.0
 
