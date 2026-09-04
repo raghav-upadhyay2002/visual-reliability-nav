@@ -26,6 +26,9 @@ LOG_HEADER = [
     # the robot/target this run (or the world's baked-in positions, if the
     # world has no grid_size/cell_size customData for randomization)
     'start_x', 'start_y', 'target_x', 'target_y',
+    # eval-only, constant across a trial -- see corruption.py. 'clean' / 1 when
+    # MAZE_NAV_CORRUPTION isn't set (i.e. every trial before this existed).
+    'corruption_type', 'corruption_severity',
 ]
 
 

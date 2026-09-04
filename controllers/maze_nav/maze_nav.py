@@ -21,6 +21,7 @@ from navigation import decide_velocities
 from trial_logger import TrialLogger
 from spawn import randomize_spawn
 from world_meta import read_world_meta
+from corruption import apply_corruption, read_corruption_config
 
 
 def main():
@@ -58,6 +59,12 @@ def main():
     print('Camera resolution right:', camera_right.getWidth(), 'x', camera_right.getHeight())
 
     logger = TrialLogger()
+
+    # Corruption type/severity are fixed for the whole trial (like start/target
+    # spawn) -- set via env vars so the eval driver can sweep them without
+    # touching this file. Defaults to ('clean', 1), i.e. no corruption.
+    corruption_type, corruption_severity = read_corruption_config()
+    print('Corruption condition:', corruption_type, 'severity:', corruption_severity)
 
     target_node = robot.getFromDef("TARGET_BALL")
     self_node = robot.getSelf()
@@ -113,10 +120,14 @@ def main():
                   "collided" if collided else \
                   "timed_out" if timed_out else None
 
-        img_bgr_front = get_camera_bgr(camera_front)
+        # Corrupt all three frames identically before any detector sees them --
+        # a real degraded sensor would degrade every camera at once, not just
+        # the one feeding a particular detector. No-op when corruption_type is
+        # 'clean' (the default).
+        img_bgr_front = apply_corruption(get_camera_bgr(camera_front), corruption_type, corruption_severity)
         # camera_left is enabled but not currently used for navigation logic below.
-        img_bgr_left = get_camera_bgr(camera_left)
-        img_bgr_right = get_camera_bgr(camera_right)
+        img_bgr_left = apply_corruption(get_camera_bgr(camera_left), corruption_type, corruption_severity)
+        img_bgr_right = apply_corruption(get_camera_bgr(camera_right), corruption_type, corruption_severity)
 
         # Front camera drives wall-ahead/wall-left detection; right camera
         # drives wall-right detection.
@@ -155,6 +166,7 @@ def main():
             round(dist_to_target, 4), collided, outcome or '',
             round(start_xy[0], 4), round(start_xy[1], 4),
             round(target_xy[0], 4), round(target_xy[1], 4),
+            corruption_type, corruption_severity,
         ])
 
         # Visualize the Canny edge map used for the wall density calculation.
