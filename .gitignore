@@ -1,0 +1,5 @@
+__pycache__/
+*.pyc
+
+# Per-run navigation logs (see controllers/maze_nav/trial_logger.py)
+run_log_*.csv
