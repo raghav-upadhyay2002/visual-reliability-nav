@@ -250,6 +250,7 @@ TexturedBackground {{
 }}
 
 TexturedBackgroundLight {{
+  castShadows FALSE
 }}
 
 Solid {{

@@ -17,6 +17,7 @@ Viewpoint {
 TexturedBackground {
 }
 TexturedBackgroundLight {
+  castShadows FALSE
 }
 Wall {
   translation -1.10113e-13 1.24 1.11959e-11
