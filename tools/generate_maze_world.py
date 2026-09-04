@@ -292,6 +292,7 @@ E-puck {{
   translation {ex} {ey} 0.0248092
   rotation 0 0 1 {erot}
   controller "{controller}"
+  supervisor TRUE
   camera_width 256
   camera_height 192
   turretSlot [
@@ -313,7 +314,7 @@ E-puck {{
     }}
   ]
 }}
-Ball {{
+DEF TARGET_BALL Ball {{
   translation {tx} {ty} 0.030379
   color 1 0 0
 }}

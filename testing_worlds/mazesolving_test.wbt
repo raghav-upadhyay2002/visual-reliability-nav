@@ -611,6 +611,7 @@ DEF EPUCK E-puck {
   translation 1.1246417527703059 -0.8749976983647633 -6.396199589357027e-05
   rotation 7.982989837091619e-07 7.886170411466234e-07 -0.9999999999993705 1.5799269309047792
   controller "maze_nav"
+  supervisor TRUE
   camera_width 256
   camera_height 192
   turretSlot [

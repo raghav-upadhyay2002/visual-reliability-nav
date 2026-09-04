@@ -634,6 +634,7 @@ E-puck {
   translation -0.525 -0.975 0.0248092
   rotation 0 0 1 4.71239
   controller "maze_nav"
+  supervisor TRUE
   camera_width 256
   camera_height 192
   turretSlot [
@@ -655,7 +656,7 @@ E-puck {
     }
   ]
 }
-Ball {
+DEF TARGET_BALL Ball {
   translation -0.075 -0.22499999999999998 0.030379
   color 1 0 0
 }

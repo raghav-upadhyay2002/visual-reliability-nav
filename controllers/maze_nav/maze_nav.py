@@ -1,4 +1,6 @@
-from controller import Robot
+import math
+
+from controller import Supervisor
 import numpy as np
 import cv2
 import os
@@ -8,6 +10,20 @@ import csv
 BLUR_ENABLED= False
 
 BLUR_SIZE=9
+
+# Trial-termination constants (supervisor/sensor-driven, eval-only -- never
+# fed into the navigation logic below). Starting values, not yet empirically
+# tuned against a real run:
+#   - TARGET_RADIUS: meters from the target center that counts as "reached".
+#     0.08 is a bit over half a 0.15m grid cell.
+#   - COLLISION_THRESHOLD: e-puck ps0-ps7 raw units past which a wall/obstacle
+#     is considered touching. This proto ships no documented lookup table --
+#     watch the printed ps values on a real run near a wall and adjust.
+#   - MAX_TRIAL_SECONDS: sim-time timeout per trial, backstopping a robot
+#     that gets stuck without colliding or reaching the target.
+TARGET_RADIUS = 0.08
+COLLISION_THRESHOLD = 80
+MAX_TRIAL_SECONDS = 120.0
 
 def blur_cam(img_bgr):
     if not BLUR_ENABLED:
@@ -191,9 +207,9 @@ def detect_walls_status_right(img_bgr_right, split_ratio):
     }
 
 
-# Webots hands us a Robot instance representing this e-puck; all devices
+# Webots hands us a Supervisor instance representing this simulation; all devices
 # (camera, motors, sensors) are accessed through it via getDevice().
-robot = Robot()
+robot = Supervisor()
 
 # Module-level (not local to get_wall_status_vision) so it persists across control-loop
 # iterations, counting consecutive frames where each zone reads "wall very close".
@@ -230,8 +246,11 @@ print('Camera resolution front:', camera_front.getWidth(), 'x', camera_front.get
 print('Camera resolution left:', camera_left.getWidth(), 'x', camera_left.getHeight())
 print('Camera resolution right:', camera_right.getWidth(), 'x', camera_right.getHeight())
 
-'''log_dir = os.path.dirname(os.path.abspath(__file__))
-log_filename = 'run_log_' + datetime.datetime.now().strftime('%Y%m%d_%H%M%S') + '.csv'
+log_dir = os.environ.get('MAZE_NAV_LOG_DIR', os.path.dirname(os.path.abspath(__file__)))
+log_filename = os.environ.get(
+    'MAZE_NAV_LOG_NAME',
+    'run_log_' + datetime.datetime.now().strftime('%Y%m%d_%H%M%S') + '.csv'
+)
 log_path = os.path.join(log_dir, log_filename)
 log_file = open(log_path, 'w', newline='')
 log_writer = csv.writer(log_file)
@@ -240,8 +259,24 @@ log_writer.writerow([
     'wall_ahead', 'wall_left', 'wall_front_right', 'wall_right',
     'left_density', 'center_density', 'right_density', 'mean_right',
     'target_visible', 'target_direction',
-    'left_velocity', 'right_velocity'
-])'''
+    'left_velocity', 'right_velocity',
+    # eval-only, from the supervisor/proximity sensors -- never fed back into
+    # the navigation decisions above
+    'dist_to_target', 'collided', 'outcome'
+])
+
+
+
+
+target_node= robot.getFromDef("TARGET_BALL")
+target_pos= target_node.getPosition()
+self_node= robot.getSelf()
+
+
+#enable the sensors only for eval no navigation
+ps_sensors = [robot.getDevice(f"ps{i}") for i in range(8)]
+for sensor in ps_sensors:
+    sensor.enable(timestep)
 
 
 
@@ -249,15 +284,18 @@ log_writer.writerow([
 
 
 
-
-
-
-
-
-
-
-
+#main loop
 while robot.step(timestep) != -1:
+    dist_to_target= math.dist(self_node.getPosition()[:2], target_pos[:2])
+    collided= any(s.getValue() > COLLISION_THRESHOLD for s in ps_sensors)
+    timed_out=  robot.getTime() > MAX_TRIAL_SECONDS
+
+
+
+    outcome= "success" if dist_to_target < TARGET_RADIUS else \
+             "collided" if collided else \
+             "timed_out" if timed_out else None
+
     # Raw camera image comes back as a flat byte buffer in BGRA order.
     image_front = camera_front.getImage()
     width_front = camera_front.getWidth()
@@ -338,16 +376,17 @@ while robot.step(timestep) != -1:
     left_motor.setVelocity(left_velocity)
     right_motor.setVelocity(right_velocity)
 
-    '''log_writer.writerow([
+    log_writer.writerow([
         round(robot.getTime(), 3),
         wall_status['wall_ahead'], wall_status['wall_left'], wall_status['wall_front_right'],
         wall_status_right['wall_right'],
         round(wall_status['left_density'], 5), round(wall_status['center_density'], 5),
         round(wall_status['right_density'], 5), round(wall_status_right['mean_right'], 3),
         target_visible, target_direction,
-        left_velocity, right_velocity
+        left_velocity, right_velocity,
+        round(dist_to_target, 4), collided, outcome or ''
     ])
-    log_file.flush()'''
+    log_file.flush()
 
     # Visualize the Canny edge map used for the wall density calculation.
     cv2.imshow("Edges", wall_status['edges'])
@@ -367,7 +406,10 @@ while robot.step(timestep) != -1:
     print("vision-right-> wall_right:", wall_status_right['wall_right'],
           "mean:", round(wall_status_right['mean_right'], 4))
 
+    if outcome:
+        robot.simulationQuit(0)
+        break
 # Close all preview windows once the control loop ends.
 cv2.destroyAllWindows()
-#log_file.close()
+log_file.close()
 
