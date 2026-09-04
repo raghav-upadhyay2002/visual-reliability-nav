@@ -8,6 +8,7 @@ never feeds back into the navigation decisions themselves.
 """
 
 import math
+import os
 
 from controller import Supervisor
 import cv2
@@ -15,8 +16,11 @@ import cv2
 from config import TARGET_RADIUS, COLLISION_THRESHOLD, MAX_TRIAL_SECONDS, RIGHT_CAMERA_SPLIT_RATIO
 from camera_utils import get_camera_bgr
 from vision import detect_target, detect_walls_status_right, WallDetector
+from vision_color import ColorWallDetector, detect_walls_status_right_color
 from navigation import decide_velocities
 from trial_logger import TrialLogger
+from spawn import randomize_spawn
+from world_meta import read_world_meta
 
 
 def main():
@@ -56,21 +60,54 @@ def main():
     logger = TrialLogger()
 
     target_node = robot.getFromDef("TARGET_BALL")
-    target_pos = target_node.getPosition()
     self_node = robot.getSelf()
+
+    # Randomize where the robot starts and where the target is, each run --
+    # see spawn.py. Falls back to the world's baked-in positions on worlds
+    # (e.g. mazesolving_test.wbt) that don't carry the grid_size/cell_size
+    # customData this needs. MAZE_NAV_SPAWN_SEED makes a specific run
+    # reproducible when set (e.g. by the eval driver); unset means a fresh
+    # random spawn every launch.
+    seed = os.environ.get('MAZE_NAV_SPAWN_SEED')
+    spawned = randomize_spawn(self_node, target_node, seed=seed)
+    if spawned is not None:
+        start_xy, target_xy = spawned
+    else:
+        start_xy = tuple(self_node.getPosition()[:2])
+        target_xy = tuple(target_node.getPosition()[:2])
+    target_pos = target_xy
 
     # Enable the proximity sensors only for eval (collision detection), not navigation.
     ps_sensors = [robot.getDevice(f"ps{i}") for i in range(8)]
     for sensor in ps_sensors:
         sensor.enable(timestep)
 
-    wall_detector = WallDetector()
+    # Prefer the color-based detectors (see vision_color.py) when this world
+    # carries its own wall_color in customData -- they replace the
+    # edge-density/brightness detectors, which stopped working once shadows
+    # and surface texture were removed from every world. Worlds without that
+    # customData (e.g. mazesolving_test.wbt, a different scale/convention)
+    # fall back to the old detectors rather than crash.
+    world_meta = read_world_meta(self_node)
+    use_color_detection = 'wall_color' in world_meta
+    if use_color_detection:
+        wall_detector = ColorWallDetector(world_meta['wall_color'])
+        right_wall_hue = wall_detector.wall_hue
+    else:
+        wall_detector = WallDetector()
 
     # Main control loop.
     while robot.step(timestep) != -1:
         dist_to_target = math.dist(self_node.getPosition()[:2], target_pos[:2])
-        collided = any(s.getValue() > COLLISION_THRESHOLD for s in ps_sensors)
+        ps_values = [s.getValue() for s in ps_sensors]
+        collided = any(v > COLLISION_THRESHOLD for v in ps_values)
         timed_out = robot.getTime() > MAX_TRIAL_SECONDS
+
+        # TEMP diagnostic: COLLISION_THRESHOLD=80 was an untuned guess (no
+        # documented lookup table for this proto) -- print raw values every
+        # step so the real "nothing nearby" baseline and "actually touching"
+        # values can be read off directly instead of guessed again.
+        print("ps values:", [round(v, 1) for v in ps_values], "collided:", collided)
 
         outcome = "success" if dist_to_target < TARGET_RADIUS else \
                   "collided" if collided else \
@@ -84,7 +121,12 @@ def main():
         # Front camera drives wall-ahead/wall-left detection; right camera
         # drives wall-right detection.
         wall_status = wall_detector.update(img_bgr_front)
-        wall_status_right = detect_walls_status_right(img_bgr_right, split_ratio=RIGHT_CAMERA_SPLIT_RATIO)
+        if use_color_detection:
+            wall_status_right = detect_walls_status_right_color(
+                img_bgr_right, right_wall_hue, split_ratio=RIGHT_CAMERA_SPLIT_RATIO
+            )
+        else:
+            wall_status_right = detect_walls_status_right(img_bgr_right, split_ratio=RIGHT_CAMERA_SPLIT_RATIO)
 
         print("vision-> wall_ahead:", wall_status['wall_ahead'],
               "wall_left:", wall_status['wall_left'],
@@ -111,6 +153,8 @@ def main():
             target_visible, target_direction,
             left_velocity, right_velocity,
             round(dist_to_target, 4), collided, outcome or '',
+            round(start_xy[0], 4), round(start_xy[1], 4),
+            round(target_xy[0], 4), round(target_xy[1], 4),
         ])
 
         # Visualize the Canny edge map used for the wall density calculation.
@@ -132,7 +176,17 @@ def main():
               "mean:", round(wall_status_right['mean_right'], 4))
 
         if outcome:
-            robot.simulationQuit(0)
+            print(f"Trial ended: {outcome} (t={round(robot.getTime(), 3)}s)")
+            # Stop the robot in place so it's visible where/how the trial ended.
+            left_motor.setVelocity(0.0)
+            right_motor.setVelocity(0.0)
+            # Only close the whole Webots app when the batch eval driver asks
+            # for it (MAZE_NAV_AUTO_QUIT=1) -- during interactive debugging,
+            # closing the app mid-trial is exactly the "starts and suddenly
+            # closes" problem: just end this controller run and leave the
+            # scene open so the trial's end state can actually be inspected.
+            if os.environ.get('MAZE_NAV_AUTO_QUIT') == '1':
+                robot.simulationQuit(0)
             break
 
     # Close all preview windows once the control loop ends.

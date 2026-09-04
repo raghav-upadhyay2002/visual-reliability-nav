@@ -294,8 +294,18 @@ E-puck {{
   rotation 0 0 1 {erot}
   controller "{controller}"
   supervisor TRUE
+  customData "grid_size={n};cell_size={cell};wall_color={wr},{wg},{wb};floor_color={fr},{fg},{fb}"
   camera_width 256
   camera_height 192
+  # Wider than the proto default (0.84 rad / ~48deg), so a bit more of each
+  # side wall is visible in frame -- helps the color-fraction zone split see
+  # more context, not just a narrow forward sliver.
+  camera_fieldOfView 1.0
+  # Pitched down (positive angle around Y, per the E-puck proto's own
+  # "linear camera mode" reference) so the wall/floor boundary stays in
+  # frame at close range -- level-mounted, the view saturates to all-wall
+  # regardless of true distance. Not yet empirically tuned to an exact angle.
+  camera_rotation 0 1 0 0.3
   turretSlot [
     Camera {{
       translation 0 0.02 0
@@ -355,6 +365,7 @@ def render_wbt(n, walls, start, target, controller="maze_nav", start_rotation=4.
     ex, ey = cell_x(start[0], cell), cell_y(n, start[1], cell)
     tx, ty = cell_x(target[0], cell), cell_y(n, target[1], cell)
     out.append(FOOTER_TMPL.format(ex=ex, ey=ey, erot=start_rotation, controller=controller,
+                                   n=n, cell=cell, wr=wr, wg=wg, wb=wb, fr=fr, fg=fg, fb=fb,
                                    tx=tx, ty=ty))
     return "".join(out)
 

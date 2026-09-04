@@ -11,12 +11,21 @@ import os
 LOG_HEADER = [
     'sim_time_s',
     'wall_ahead', 'wall_left', 'wall_front_right', 'wall_right',
+    # *_density/mean_right hold different quantities depending on which
+    # detector ran (vision.WallDetector -- edge density / mean brightness --
+    # vs vision_color.ColorWallDetector -- wall-color pixel fraction, same
+    # column names kept for schema stability; check whether the source world
+    # had a wall_color in customData to know which detector was active).
     'left_density', 'center_density', 'right_density', 'mean_right',
     'target_visible', 'target_direction',
     'left_velocity', 'right_velocity',
     # eval-only, from the supervisor/proximity sensors -- never fed back into
     # the navigation decisions above
     'dist_to_target', 'collided', 'outcome',
+    # eval-only, constant across a trial -- where spawn.randomize_spawn() put
+    # the robot/target this run (or the world's baked-in positions, if the
+    # world has no grid_size/cell_size customData for randomization)
+    'start_x', 'start_y', 'target_x', 'target_y',
 ]
 
 

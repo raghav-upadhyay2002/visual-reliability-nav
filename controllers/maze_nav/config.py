@@ -9,12 +9,19 @@ BLUR_SIZE = 9
 #   - TARGET_RADIUS: meters from the target center that counts as "reached".
 #     0.08 is a bit over half a 0.15m grid cell.
 #   - COLLISION_THRESHOLD: e-puck ps0-ps7 raw units past which a wall/obstacle
-#     is considered touching. This proto ships no documented lookup table --
-#     watch the printed ps values on a real run near a wall and adjust.
+#     is considered touching. This proto ships no documented lookup table.
+#     80 was a pure guess and turned out to sit INSIDE the sensor noise floor
+#     -- observed open-space readings in a real run ranged ~56-76 with noise
+#     spikes to 80+, so it fired constantly with nothing nearby (see the
+#     printed ps-values diagnostic in maze_nav.py's main loop). 250 is a
+#     wide-margin guess above that noise ceiling, not yet confirmed against
+#     an actual wall touch -- still needs one real-contact sample to pin down
+#     precisely; watch the printed ps values again once the robot can
+#     actually reach a wall on purpose.
 #   - MAX_TRIAL_SECONDS: sim-time timeout per trial, backstopping a robot
 #     that gets stuck without colliding or reaching the target.
 TARGET_RADIUS = 0.08
-COLLISION_THRESHOLD = 80
+COLLISION_THRESHOLD = 250
 MAX_TRIAL_SECONDS = 120.0
 
 # Wall detection (front camera, edge-density based).
@@ -37,3 +44,12 @@ RIGHT_WALL_BRIGHTNESS_THRESHOLD = 195.0
 
 # Navigation.
 WHEEL_SPEED = 3.0
+
+# Spawn randomization (see spawn.py). Resting heights match the E-puck/Ball
+# proto geometry -- constant across every world regardless of grid/cell size
+# (see tools/generate_maze_world.py's module docstring for the derivation).
+EPUCK_RESTING_Z = 0.0248092
+BALL_RESTING_Z = 0.030379
+# Reject a random start/target pair closer than this fraction of the grid
+# size (in cells) apart, so trials aren't trivially short.
+SPAWN_MIN_SEPARATION_FRACTION = 0.5

@@ -1020,8 +1020,11 @@ E-puck {
   rotation 0 0 1 1.5708
   controller "maze_nav"
   supervisor TRUE
+  customData "grid_size=10;cell_size=0.15;wall_color=0.4,0.2,0.6;floor_color=0.97,0.88,0.82"
   camera_width 256
   camera_height 192
+  camera_fieldOfView 1.0
+  camera_rotation 0 1 0 0.3
   turretSlot [
     Camera {
       translation 0 0.02 0
