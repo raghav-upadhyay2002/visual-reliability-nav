@@ -11,10 +11,13 @@ math. Two modes:
             just the matching .wbt, without generating new wall layout.
 
 Grid/coordinate convention (derived from training_worlds/train_maze_01.wbt
-and cross-checked against train_maze_02/05/09, all of which use a 0.1m cell):
-  - An NxN grid of `cell`-meter cells (--cell-size, default 0.15 -- wider than
-    the original 0.1m convention, chosen to give the 0.075m-diameter e-puck
-    more physical clearance in a corridor; see [[feedback-maze-complexity]]).
+and cross-checked against train_maze_02/05/09, originally authored at a 0.1m
+cell, then widened to 0.15m, then to the current 0.5m -- see DEFAULT_CELL):
+  - An NxN grid of `cell`-meter cells (--cell-size, default 0.5 -- the
+    0.075m-diameter e-puck was still clipping walls mid-turn at 0.15m, so
+    this was raised again, well past the robot's own footprint, to match the
+    scale of a reference world the project is being aligned to; see
+    [[feedback-maze-complexity]]).
     SVG uses 10-unit cells regardless of physical cell size (grid line at
     x=k*10 <-> Webots x offset k*cell); col/row are 0-indexed, 0 at the
     SVG-coordinate-origin corner.
@@ -23,11 +26,11 @@ and cross-checked against train_maze_02/05/09, all of which use a 0.1m cell):
     default boundary walls, not by anything this script writes.
   - "e" wall = vertical wall between cell (c, r) and (c+1, r):
       translation (-(c+1)*cell, -(N*cell) + cell*(r + 0.5), 0),
-      size "0.01 cell 0.1" (thickness/height fixed regardless of cell size;
-      only the cell-spanning length dimension scales)
+      size "WALL_THICKNESS cell WALL_HEIGHT" (thickness/height fixed
+      regardless of cell size; only the cell-spanning length dimension scales)
   - "s" wall = horizontal wall between cell (c, r) and (c, r+1):
       translation (-(c + 0.5)*cell, -(N*cell) + cell*(r + 1), 0),
-      size "cell 0.01 0.1"
+      size "cell WALL_THICKNESS WALL_HEIGHT"
   - Cell center (used for the E-puck start and Ball target):
       x = -(c + 0.5) * cell
       y = -(N*cell) + cell*(r + 0.5)   (same formula as the "e" wall's y)
@@ -55,10 +58,14 @@ import xml.etree.ElementTree as ET
 from collections import deque
 from pathlib import Path
 
-DEFAULT_CELL = 0.15  # meters per grid cell -- wider than the original 0.1m
-                      # convention, for more e-puck clearance (see module docstring)
-WALL_THICKNESS = 0.01
-WALL_HEIGHT = 0.1
+DEFAULT_CELL = 0.5  # meters per grid cell -- raised from 0.15m after the
+                     # e-puck was still clipping walls mid-turn even with that
+                     # clearance; matches the scale of the reference world the
+                     # user pointed at (0.5m wall spacing, 0.05m thickness,
+                     # 0.15m height) rather than a value derived from the
+                     # robot's own footprint.
+WALL_THICKNESS = 0.05
+WALL_HEIGHT = 0.15
 
 
 # --------------------------------------------------------------------------
@@ -299,8 +306,13 @@ E-puck {{
   camera_height 192
   # Wider than the proto default (0.84 rad / ~48deg), so a bit more of each
   # side wall is visible in frame -- helps the color-fraction zone split see
-  # more context, not just a narrow forward sliver.
-  camera_fieldOfView 1.0
+  # more context, not just a narrow forward sliver. Raised again to 1.4 after
+  # the color-fraction detector was found saturating near-solid-wall (~1.0)
+  # for most of a trial back when cells were 0.15m. Cells are now 0.5m (see
+  # DEFAULT_CELL), which changes the close-range geometry this was tuned
+  # against -- still unconfirmed against a fresh run at the new scale; check
+  # center_density in the CSV log actually ramps instead of saturating.
+  camera_fieldOfView 1.4
   # Pitched down (positive angle around Y, per the E-puck proto's own
   # "linear camera mode" reference) so the wall/floor boundary stays in
   # frame at close range -- level-mounted, the view saturates to all-wall

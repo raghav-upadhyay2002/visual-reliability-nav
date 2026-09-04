@@ -26,7 +26,10 @@ below is a starting guess (a zone is "close" once ~45% of it is wall-colored),
 not yet validated against a real run the way the old thresholds eventually
 were. Needs the front camera actually pitched down (camera_rotation in the
 world files) for wall_frac to scale with distance at all -- level-mounted at
-close range it saturates near 1.0 regardless of true distance.
+close range it saturates near 1.0 regardless of true distance. Tuned against
+a 0.15m-cell maze; cells are now 0.5m (see generate_maze_world.DEFAULT_CELL),
+which changes how quickly wall_frac ramps as the robot approaches a wall --
+not yet re-checked at the new scale.
 """
 
 import cv2

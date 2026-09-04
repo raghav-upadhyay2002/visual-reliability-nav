@@ -7,7 +7,11 @@ BLUR_SIZE = 9
 # fed into the navigation logic). Starting values, not yet empirically tuned
 # against a real run:
 #   - TARGET_RADIUS: meters from the target center that counts as "reached".
-#     0.08 is a bit over half a 0.15m grid cell.
+#     0.08 is a bit over half of what was a 0.15m grid cell; cells are now
+#     0.5m (see tools/generate_maze_world.py DEFAULT_CELL) so this is a
+#     smaller fraction of a cell than originally tuned, but still a
+#     reasonable "reached" radius -- not yet re-validated against a real run
+#     at the new scale.
 #   - COLLISION_THRESHOLD: e-puck ps0-ps7 raw units past which a wall/obstacle
 #     is considered touching. This proto ships no documented lookup table.
 #     80 was a pure guess and turned out to sit INSIDE the sensor noise floor
@@ -19,10 +23,14 @@ BLUR_SIZE = 9
 #     precisely; watch the printed ps values again once the robot can
 #     actually reach a wall on purpose.
 #   - MAX_TRIAL_SECONDS: sim-time timeout per trial, backstopping a robot
-#     that gets stuck without colliding or reaching the target.
+#     that gets stuck without colliding or reaching the target. Raised from
+#     120s -> 300s alongside the 0.15m -> 0.5m cell-size increase (~3.3x more
+#     physical distance to cover at the same WHEEL_SPEED); not yet confirmed
+#     this is enough headroom for the longest paths on the biggest (10x10)
+#     mazes.
 TARGET_RADIUS = 0.08
 COLLISION_THRESHOLD = 250
-MAX_TRIAL_SECONDS = 120.0
+MAX_TRIAL_SECONDS = 300.0
 
 # Wall detection (front camera, edge-density based).
 # Empirical cutoff: below this edge density, a zone is considered "wall very

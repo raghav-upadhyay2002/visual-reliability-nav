@@ -13,7 +13,7 @@ info [
 }
 Viewpoint {
     orientation 0 2 0 1.52
-    position -1.05 -0.75 3.0
+    position -3.5 -2.5 10.0
     follow "e-puck"
 }
 TexturedBackground {
@@ -27,9 +27,9 @@ Solid {
     children [
 
         RectangleArena {
-            translation -0.75 -0.75 0
+            translation -2.5 -2.5 0
             rotation 1 0 0 0
-            floorSize 1.5 1.5
+            floorSize 5.0 5.0
             wallAppearance PBRAppearance {
                 baseColor 0.1 0.55 0.5
                 roughness 1
@@ -43,10 +43,10 @@ Solid {
         }
 
 		Wall {
-			translation  -0.15 -1.425  0
+			translation  -0.5 -4.75  0
 			rotation 1 0 0 0
 			name "wall_0_0_e"
-			size 0.01 0.15 0.1
+			size 0.05 0.5 0.15
 			appearance PBRAppearance {
 				baseColor 0.1 0.55 0.5
 				roughness 1
@@ -55,10 +55,10 @@ Solid {
 		}
 
 		Wall {
-			translation  -0.15 -0.675  0
+			translation  -0.5 -2.25  0
 			rotation 1 0 0 0
 			name "wall_0_5_e"
-			size 0.01 0.15 0.1
+			size 0.05 0.5 0.15
 			appearance PBRAppearance {
 				baseColor 0.1 0.55 0.5
 				roughness 1
@@ -67,10 +67,10 @@ Solid {
 		}
 
 		Wall {
-			translation  -0.15 -0.525  0
+			translation  -0.5 -1.75  0
 			rotation 1 0 0 0
 			name "wall_0_6_e"
-			size 0.01 0.15 0.1
+			size 0.05 0.5 0.15
 			appearance PBRAppearance {
 				baseColor 0.1 0.55 0.5
 				roughness 1
@@ -79,10 +79,10 @@ Solid {
 		}
 
 		Wall {
-			translation  -0.15 -0.375  0
+			translation  -0.5 -1.25  0
 			rotation 1 0 0 0
 			name "wall_0_7_e"
-			size 0.01 0.15 0.1
+			size 0.05 0.5 0.15
 			appearance PBRAppearance {
 				baseColor 0.1 0.55 0.5
 				roughness 1
@@ -91,10 +91,10 @@ Solid {
 		}
 
 		Wall {
-			translation  -0.3 -1.275  0
+			translation  -1.0 -4.25  0
 			rotation 1 0 0 0
 			name "wall_1_1_e"
-			size 0.01 0.15 0.1
+			size 0.05 0.5 0.15
 			appearance PBRAppearance {
 				baseColor 0.1 0.55 0.5
 				roughness 1
@@ -103,10 +103,10 @@ Solid {
 		}
 
 		Wall {
-			translation  -0.3 -0.525  0
+			translation  -1.0 -1.75  0
 			rotation 1 0 0 0
 			name "wall_1_6_e"
-			size 0.01 0.15 0.1
+			size 0.05 0.5 0.15
 			appearance PBRAppearance {
 				baseColor 0.1 0.55 0.5
 				roughness 1
@@ -115,10 +115,10 @@ Solid {
 		}
 
 		Wall {
-			translation  -0.3 -0.375  0
+			translation  -1.0 -1.25  0
 			rotation 1 0 0 0
 			name "wall_1_7_e"
-			size 0.01 0.15 0.1
+			size 0.05 0.5 0.15
 			appearance PBRAppearance {
 				baseColor 0.1 0.55 0.5
 				roughness 1
@@ -127,10 +127,10 @@ Solid {
 		}
 
 		Wall {
-			translation  -0.44999999999999996 -1.425  0
+			translation  -1.5 -4.75  0
 			rotation 1 0 0 0
 			name "wall_2_0_e"
-			size 0.01 0.15 0.1
+			size 0.05 0.5 0.15
 			appearance PBRAppearance {
 				baseColor 0.1 0.55 0.5
 				roughness 1
@@ -139,10 +139,10 @@ Solid {
 		}
 
 		Wall {
-			translation  -0.44999999999999996 -1.125  0
+			translation  -1.5 -3.75  0
 			rotation 1 0 0 0
 			name "wall_2_2_e"
-			size 0.01 0.15 0.1
+			size 0.05 0.5 0.15
 			appearance PBRAppearance {
 				baseColor 0.1 0.55 0.5
 				roughness 1
@@ -151,10 +151,10 @@ Solid {
 		}
 
 		Wall {
-			translation  -0.44999999999999996 -0.675  0
+			translation  -1.5 -2.25  0
 			rotation 1 0 0 0
 			name "wall_2_5_e"
-			size 0.01 0.15 0.1
+			size 0.05 0.5 0.15
 			appearance PBRAppearance {
 				baseColor 0.1 0.55 0.5
 				roughness 1
@@ -163,10 +163,10 @@ Solid {
 		}
 
 		Wall {
-			translation  -0.6 -1.275  0
+			translation  -2.0 -4.25  0
 			rotation 1 0 0 0
 			name "wall_3_1_e"
-			size 0.01 0.15 0.1
+			size 0.05 0.5 0.15
 			appearance PBRAppearance {
 				baseColor 0.1 0.55 0.5
 				roughness 1
@@ -175,10 +175,10 @@ Solid {
 		}
 
 		Wall {
-			translation  -0.6 -0.8250000000000001  0
+			translation  -2.0 -2.75  0
 			rotation 1 0 0 0
 			name "wall_3_4_e"
-			size 0.01 0.15 0.1
+			size 0.05 0.5 0.15
 			appearance PBRAppearance {
 				baseColor 0.1 0.55 0.5
 				roughness 1
@@ -187,10 +187,10 @@ Solid {
 		}
 
 		Wall {
-			translation  -0.75 -1.275  0
+			translation  -2.5 -4.25  0
 			rotation 1 0 0 0
 			name "wall_4_1_e"
-			size 0.01 0.15 0.1
+			size 0.05 0.5 0.15
 			appearance PBRAppearance {
 				baseColor 0.1 0.55 0.5
 				roughness 1
@@ -199,10 +199,10 @@ Solid {
 		}
 
 		Wall {
-			translation  -0.75 -1.125  0
+			translation  -2.5 -3.75  0
 			rotation 1 0 0 0
 			name "wall_4_2_e"
-			size 0.01 0.15 0.1
+			size 0.05 0.5 0.15
 			appearance PBRAppearance {
 				baseColor 0.1 0.55 0.5
 				roughness 1
@@ -211,10 +211,10 @@ Solid {
 		}
 
 		Wall {
-			translation  -0.75 -0.975  0
+			translation  -2.5 -3.25  0
 			rotation 1 0 0 0
 			name "wall_4_3_e"
-			size 0.01 0.15 0.1
+			size 0.05 0.5 0.15
 			appearance PBRAppearance {
 				baseColor 0.1 0.55 0.5
 				roughness 1
@@ -223,10 +223,10 @@ Solid {
 		}
 
 		Wall {
-			translation  -0.75 -0.525  0
+			translation  -2.5 -1.75  0
 			rotation 1 0 0 0
 			name "wall_4_6_e"
-			size 0.01 0.15 0.1
+			size 0.05 0.5 0.15
 			appearance PBRAppearance {
 				baseColor 0.1 0.55 0.5
 				roughness 1
@@ -235,10 +235,10 @@ Solid {
 		}
 
 		Wall {
-			translation  -0.75 -0.375  0
+			translation  -2.5 -1.25  0
 			rotation 1 0 0 0
 			name "wall_4_7_e"
-			size 0.01 0.15 0.1
+			size 0.05 0.5 0.15
 			appearance PBRAppearance {
 				baseColor 0.1 0.55 0.5
 				roughness 1
@@ -247,10 +247,10 @@ Solid {
 		}
 
 		Wall {
-			translation  -0.8999999999999999 -1.275  0
+			translation  -3.0 -4.25  0
 			rotation 1 0 0 0
 			name "wall_5_1_e"
-			size 0.01 0.15 0.1
+			size 0.05 0.5 0.15
 			appearance PBRAppearance {
 				baseColor 0.1 0.55 0.5
 				roughness 1
@@ -259,10 +259,10 @@ Solid {
 		}
 
 		Wall {
-			translation  -0.8999999999999999 -1.125  0
+			translation  -3.0 -3.75  0
 			rotation 1 0 0 0
 			name "wall_5_2_e"
-			size 0.01 0.15 0.1
+			size 0.05 0.5 0.15
 			appearance PBRAppearance {
 				baseColor 0.1 0.55 0.5
 				roughness 1
@@ -271,10 +271,10 @@ Solid {
 		}
 
 		Wall {
-			translation  -0.8999999999999999 -0.975  0
+			translation  -3.0 -3.25  0
 			rotation 1 0 0 0
 			name "wall_5_3_e"
-			size 0.01 0.15 0.1
+			size 0.05 0.5 0.15
 			appearance PBRAppearance {
 				baseColor 0.1 0.55 0.5
 				roughness 1
@@ -283,10 +283,10 @@ Solid {
 		}
 
 		Wall {
-			translation  -0.8999999999999999 -0.8250000000000001  0
+			translation  -3.0 -2.75  0
 			rotation 1 0 0 0
 			name "wall_5_4_e"
-			size 0.01 0.15 0.1
+			size 0.05 0.5 0.15
 			appearance PBRAppearance {
 				baseColor 0.1 0.55 0.5
 				roughness 1
@@ -295,10 +295,10 @@ Solid {
 		}
 
 		Wall {
-			translation  -1.05 -1.425  0
+			translation  -3.5 -4.75  0
 			rotation 1 0 0 0
 			name "wall_6_0_e"
-			size 0.01 0.15 0.1
+			size 0.05 0.5 0.15
 			appearance PBRAppearance {
 				baseColor 0.1 0.55 0.5
 				roughness 1
@@ -307,10 +307,10 @@ Solid {
 		}
 
 		Wall {
-			translation  -1.05 -1.275  0
+			translation  -3.5 -4.25  0
 			rotation 1 0 0 0
 			name "wall_6_1_e"
-			size 0.01 0.15 0.1
+			size 0.05 0.5 0.15
 			appearance PBRAppearance {
 				baseColor 0.1 0.55 0.5
 				roughness 1
@@ -319,10 +319,10 @@ Solid {
 		}
 
 		Wall {
-			translation  -1.05 -1.125  0
+			translation  -3.5 -3.75  0
 			rotation 1 0 0 0
 			name "wall_6_2_e"
-			size 0.01 0.15 0.1
+			size 0.05 0.5 0.15
 			appearance PBRAppearance {
 				baseColor 0.1 0.55 0.5
 				roughness 1
@@ -331,10 +331,10 @@ Solid {
 		}
 
 		Wall {
-			translation  -1.05 -0.975  0
+			translation  -3.5 -3.25  0
 			rotation 1 0 0 0
 			name "wall_6_3_e"
-			size 0.01 0.15 0.1
+			size 0.05 0.5 0.15
 			appearance PBRAppearance {
 				baseColor 0.1 0.55 0.5
 				roughness 1
@@ -343,10 +343,10 @@ Solid {
 		}
 
 		Wall {
-			translation  -1.05 -0.675  0
+			translation  -3.5 -2.25  0
 			rotation 1 0 0 0
 			name "wall_6_5_e"
-			size 0.01 0.15 0.1
+			size 0.05 0.5 0.15
 			appearance PBRAppearance {
 				baseColor 0.1 0.55 0.5
 				roughness 1
@@ -355,10 +355,10 @@ Solid {
 		}
 
 		Wall {
-			translation  -1.05 -0.2250000000000001  0
+			translation  -3.5 -0.75  0
 			rotation 1 0 0 0
 			name "wall_6_8_e"
-			size 0.01 0.15 0.1
+			size 0.05 0.5 0.15
 			appearance PBRAppearance {
 				baseColor 0.1 0.55 0.5
 				roughness 1
@@ -367,10 +367,10 @@ Solid {
 		}
 
 		Wall {
-			translation  -1.2 -1.275  0
+			translation  -4.0 -4.25  0
 			rotation 1 0 0 0
 			name "wall_7_1_e"
-			size 0.01 0.15 0.1
+			size 0.05 0.5 0.15
 			appearance PBRAppearance {
 				baseColor 0.1 0.55 0.5
 				roughness 1
@@ -379,10 +379,10 @@ Solid {
 		}
 
 		Wall {
-			translation  -1.2 -1.125  0
+			translation  -4.0 -3.75  0
 			rotation 1 0 0 0
 			name "wall_7_2_e"
-			size 0.01 0.15 0.1
+			size 0.05 0.5 0.15
 			appearance PBRAppearance {
 				baseColor 0.1 0.55 0.5
 				roughness 1
@@ -391,10 +391,10 @@ Solid {
 		}
 
 		Wall {
-			translation  -1.2 -0.975  0
+			translation  -4.0 -3.25  0
 			rotation 1 0 0 0
 			name "wall_7_3_e"
-			size 0.01 0.15 0.1
+			size 0.05 0.5 0.15
 			appearance PBRAppearance {
 				baseColor 0.1 0.55 0.5
 				roughness 1
@@ -403,10 +403,10 @@ Solid {
 		}
 
 		Wall {
-			translation  -1.2 -0.8250000000000001  0
+			translation  -4.0 -2.75  0
 			rotation 1 0 0 0
 			name "wall_7_4_e"
-			size 0.01 0.15 0.1
+			size 0.05 0.5 0.15
 			appearance PBRAppearance {
 				baseColor 0.1 0.55 0.5
 				roughness 1
@@ -415,10 +415,10 @@ Solid {
 		}
 
 		Wall {
-			translation  -1.2 -0.525  0
+			translation  -4.0 -1.75  0
 			rotation 1 0 0 0
 			name "wall_7_6_e"
-			size 0.01 0.15 0.1
+			size 0.05 0.5 0.15
 			appearance PBRAppearance {
 				baseColor 0.1 0.55 0.5
 				roughness 1
@@ -427,10 +427,10 @@ Solid {
 		}
 
 		Wall {
-			translation  -1.2 -0.375  0
+			translation  -4.0 -1.25  0
 			rotation 1 0 0 0
 			name "wall_7_7_e"
-			size 0.01 0.15 0.1
+			size 0.05 0.5 0.15
 			appearance PBRAppearance {
 				baseColor 0.1 0.55 0.5
 				roughness 1
@@ -439,10 +439,10 @@ Solid {
 		}
 
 		Wall {
-			translation  -1.3499999999999999 -0.8250000000000001  0
+			translation  -4.5 -2.75  0
 			rotation 1 0 0 0
 			name "wall_8_4_e"
-			size 0.01 0.15 0.1
+			size 0.05 0.5 0.15
 			appearance PBRAppearance {
 				baseColor 0.1 0.55 0.5
 				roughness 1
@@ -451,10 +451,10 @@ Solid {
 		}
 
 		Wall {
-			translation  -1.3499999999999999 -0.675  0
+			translation  -4.5 -2.25  0
 			rotation 1 0 0 0
 			name "wall_8_5_e"
-			size 0.01 0.15 0.1
+			size 0.05 0.5 0.15
 			appearance PBRAppearance {
 				baseColor 0.1 0.55 0.5
 				roughness 1
@@ -463,10 +463,10 @@ Solid {
 		}
 
 		Wall {
-			translation  -1.3499999999999999 -0.525  0
+			translation  -4.5 -1.75  0
 			rotation 1 0 0 0
 			name "wall_8_6_e"
-			size 0.01 0.15 0.1
+			size 0.05 0.5 0.15
 			appearance PBRAppearance {
 				baseColor 0.1 0.55 0.5
 				roughness 1
@@ -475,10 +475,10 @@ Solid {
 		}
 
 		Wall {
-			translation  -1.3499999999999999 -0.375  0
+			translation  -4.5 -1.25  0
 			rotation 1 0 0 0
 			name "wall_8_7_e"
-			size 0.01 0.15 0.1
+			size 0.05 0.5 0.15
 			appearance PBRAppearance {
 				baseColor 0.1 0.55 0.5
 				roughness 1
@@ -487,10 +487,10 @@ Solid {
 		}
 
 		Wall {
-			translation  -1.3499999999999999 -0.2250000000000001  0
+			translation  -4.5 -0.75  0
 			rotation 1 0 0 0
 			name "wall_8_8_e"
-			size 0.01 0.15 0.1
+			size 0.05 0.5 0.15
 			appearance PBRAppearance {
 				baseColor 0.1 0.55 0.5
 				roughness 1
@@ -499,10 +499,10 @@ Solid {
 		}
 
 		Wall {
-			translation  -0.075 -1.2  0
+			translation  -0.25 -4.0  0
 			rotation 1 0 0 0
 			name "wall_0_1_s"
-			size 0.15 0.01 0.1
+			size 0.5 0.05 0.15
 			appearance PBRAppearance {
 				baseColor 0.1 0.55 0.5
 				roughness 1
@@ -511,10 +511,10 @@ Solid {
 		}
 
 		Wall {
-			translation  -0.075 -1.05  0
+			translation  -0.25 -3.5  0
 			rotation 1 0 0 0
 			name "wall_0_2_s"
-			size 0.15 0.01 0.1
+			size 0.5 0.05 0.15
 			appearance PBRAppearance {
 				baseColor 0.1 0.55 0.5
 				roughness 1
@@ -523,10 +523,10 @@ Solid {
 		}
 
 		Wall {
-			translation  -0.075 -0.15000000000000013  0
+			translation  -0.25 -0.5  0
 			rotation 1 0 0 0
 			name "wall_0_8_s"
-			size 0.15 0.01 0.1
+			size 0.5 0.05 0.15
 			appearance PBRAppearance {
 				baseColor 0.1 0.55 0.5
 				roughness 1
@@ -535,10 +535,10 @@ Solid {
 		}
 
 		Wall {
-			translation  -0.22499999999999998 -1.2  0
+			translation  -0.75 -4.0  0
 			rotation 1 0 0 0
 			name "wall_1_1_s"
-			size 0.15 0.01 0.1
+			size 0.5 0.05 0.15
 			appearance PBRAppearance {
 				baseColor 0.1 0.55 0.5
 				roughness 1
@@ -547,10 +547,10 @@ Solid {
 		}
 
 		Wall {
-			translation  -0.22499999999999998 -1.05  0
+			translation  -0.75 -3.5  0
 			rotation 1 0 0 0
 			name "wall_1_2_s"
-			size 0.15 0.01 0.1
+			size 0.5 0.05 0.15
 			appearance PBRAppearance {
 				baseColor 0.1 0.55 0.5
 				roughness 1
@@ -559,10 +559,10 @@ Solid {
 		}
 
 		Wall {
-			translation  -0.22499999999999998 -0.9  0
+			translation  -0.75 -3.0  0
 			rotation 1 0 0 0
 			name "wall_1_3_s"
-			size 0.15 0.01 0.1
+			size 0.5 0.05 0.15
 			appearance PBRAppearance {
 				baseColor 0.1 0.55 0.5
 				roughness 1
@@ -571,10 +571,10 @@ Solid {
 		}
 
 		Wall {
-			translation  -0.22499999999999998 -0.75  0
+			translation  -0.75 -2.5  0
 			rotation 1 0 0 0
 			name "wall_1_4_s"
-			size 0.15 0.01 0.1
+			size 0.5 0.05 0.15
 			appearance PBRAppearance {
 				baseColor 0.1 0.55 0.5
 				roughness 1
@@ -583,10 +583,10 @@ Solid {
 		}
 
 		Wall {
-			translation  -0.22499999999999998 -0.30000000000000004  0
+			translation  -0.75 -1.0  0
 			rotation 1 0 0 0
 			name "wall_1_7_s"
-			size 0.15 0.01 0.1
+			size 0.5 0.05 0.15
 			appearance PBRAppearance {
 				baseColor 0.1 0.55 0.5
 				roughness 1
@@ -595,10 +595,10 @@ Solid {
 		}
 
 		Wall {
-			translation  -0.22499999999999998 -0.15000000000000013  0
+			translation  -0.75 -0.5  0
 			rotation 1 0 0 0
 			name "wall_1_8_s"
-			size 0.15 0.01 0.1
+			size 0.5 0.05 0.15
 			appearance PBRAppearance {
 				baseColor 0.1 0.55 0.5
 				roughness 1
@@ -607,10 +607,10 @@ Solid {
 		}
 
 		Wall {
-			translation  -0.375 -1.2  0
+			translation  -1.25 -4.0  0
 			rotation 1 0 0 0
 			name "wall_2_1_s"
-			size 0.15 0.01 0.1
+			size 0.5 0.05 0.15
 			appearance PBRAppearance {
 				baseColor 0.1 0.55 0.5
 				roughness 1
@@ -619,10 +619,10 @@ Solid {
 		}
 
 		Wall {
-			translation  -0.375 -0.9  0
+			translation  -1.25 -3.0  0
 			rotation 1 0 0 0
 			name "wall_2_3_s"
-			size 0.15 0.01 0.1
+			size 0.5 0.05 0.15
 			appearance PBRAppearance {
 				baseColor 0.1 0.55 0.5
 				roughness 1
@@ -631,10 +631,10 @@ Solid {
 		}
 
 		Wall {
-			translation  -0.375 -0.75  0
+			translation  -1.25 -2.5  0
 			rotation 1 0 0 0
 			name "wall_2_4_s"
-			size 0.15 0.01 0.1
+			size 0.5 0.05 0.15
 			appearance PBRAppearance {
 				baseColor 0.1 0.55 0.5
 				roughness 1
@@ -643,10 +643,10 @@ Solid {
 		}
 
 		Wall {
-			translation  -0.375 -0.30000000000000004  0
+			translation  -1.25 -1.0  0
 			rotation 1 0 0 0
 			name "wall_2_7_s"
-			size 0.15 0.01 0.1
+			size 0.5 0.05 0.15
 			appearance PBRAppearance {
 				baseColor 0.1 0.55 0.5
 				roughness 1
@@ -655,10 +655,10 @@ Solid {
 		}
 
 		Wall {
-			translation  -0.375 -0.15000000000000013  0
+			translation  -1.25 -0.5  0
 			rotation 1 0 0 0
 			name "wall_2_8_s"
-			size 0.15 0.01 0.1
+			size 0.5 0.05 0.15
 			appearance PBRAppearance {
 				baseColor 0.1 0.55 0.5
 				roughness 1
@@ -667,10 +667,10 @@ Solid {
 		}
 
 		Wall {
-			translation  -0.525 -1.35  0
+			translation  -1.75 -4.5  0
 			rotation 1 0 0 0
 			name "wall_3_0_s"
-			size 0.15 0.01 0.1
+			size 0.5 0.05 0.15
 			appearance PBRAppearance {
 				baseColor 0.1 0.55 0.5
 				roughness 1
@@ -679,10 +679,10 @@ Solid {
 		}
 
 		Wall {
-			translation  -0.525 -1.05  0
+			translation  -1.75 -3.5  0
 			rotation 1 0 0 0
 			name "wall_3_2_s"
-			size 0.15 0.01 0.1
+			size 0.5 0.05 0.15
 			appearance PBRAppearance {
 				baseColor 0.1 0.55 0.5
 				roughness 1
@@ -691,10 +691,10 @@ Solid {
 		}
 
 		Wall {
-			translation  -0.525 -0.9  0
+			translation  -1.75 -3.0  0
 			rotation 1 0 0 0
 			name "wall_3_3_s"
-			size 0.15 0.01 0.1
+			size 0.5 0.05 0.15
 			appearance PBRAppearance {
 				baseColor 0.1 0.55 0.5
 				roughness 1
@@ -703,10 +703,10 @@ Solid {
 		}
 
 		Wall {
-			translation  -0.525 -0.6000000000000001  0
+			translation  -1.75 -2.0  0
 			rotation 1 0 0 0
 			name "wall_3_5_s"
-			size 0.15 0.01 0.1
+			size 0.5 0.05 0.15
 			appearance PBRAppearance {
 				baseColor 0.1 0.55 0.5
 				roughness 1
@@ -715,10 +715,10 @@ Solid {
 		}
 
 		Wall {
-			translation  -0.525 -0.44999999999999996  0
+			translation  -1.75 -1.5  0
 			rotation 1 0 0 0
 			name "wall_3_6_s"
-			size 0.15 0.01 0.1
+			size 0.5 0.05 0.15
 			appearance PBRAppearance {
 				baseColor 0.1 0.55 0.5
 				roughness 1
@@ -727,10 +727,10 @@ Solid {
 		}
 
 		Wall {
-			translation  -0.525 -0.30000000000000004  0
+			translation  -1.75 -1.0  0
 			rotation 1 0 0 0
 			name "wall_3_7_s"
-			size 0.15 0.01 0.1
+			size 0.5 0.05 0.15
 			appearance PBRAppearance {
 				baseColor 0.1 0.55 0.5
 				roughness 1
@@ -739,10 +739,10 @@ Solid {
 		}
 
 		Wall {
-			translation  -0.525 -0.15000000000000013  0
+			translation  -1.75 -0.5  0
 			rotation 1 0 0 0
 			name "wall_3_8_s"
-			size 0.15 0.01 0.1
+			size 0.5 0.05 0.15
 			appearance PBRAppearance {
 				baseColor 0.1 0.55 0.5
 				roughness 1
@@ -751,10 +751,10 @@ Solid {
 		}
 
 		Wall {
-			translation  -0.6749999999999999 -1.05  0
+			translation  -2.25 -3.5  0
 			rotation 1 0 0 0
 			name "wall_4_2_s"
-			size 0.15 0.01 0.1
+			size 0.5 0.05 0.15
 			appearance PBRAppearance {
 				baseColor 0.1 0.55 0.5
 				roughness 1
@@ -763,10 +763,10 @@ Solid {
 		}
 
 		Wall {
-			translation  -0.6749999999999999 -0.75  0
+			translation  -2.25 -2.5  0
 			rotation 1 0 0 0
 			name "wall_4_4_s"
-			size 0.15 0.01 0.1
+			size 0.5 0.05 0.15
 			appearance PBRAppearance {
 				baseColor 0.1 0.55 0.5
 				roughness 1
@@ -775,10 +775,10 @@ Solid {
 		}
 
 		Wall {
-			translation  -0.6749999999999999 -0.6000000000000001  0
+			translation  -2.25 -2.0  0
 			rotation 1 0 0 0
 			name "wall_4_5_s"
-			size 0.15 0.01 0.1
+			size 0.5 0.05 0.15
 			appearance PBRAppearance {
 				baseColor 0.1 0.55 0.5
 				roughness 1
@@ -787,10 +787,10 @@ Solid {
 		}
 
 		Wall {
-			translation  -0.6749999999999999 -0.44999999999999996  0
+			translation  -2.25 -1.5  0
 			rotation 1 0 0 0
 			name "wall_4_6_s"
-			size 0.15 0.01 0.1
+			size 0.5 0.05 0.15
 			appearance PBRAppearance {
 				baseColor 0.1 0.55 0.5
 				roughness 1
@@ -799,10 +799,10 @@ Solid {
 		}
 
 		Wall {
-			translation  -0.6749999999999999 -0.15000000000000013  0
+			translation  -2.25 -0.5  0
 			rotation 1 0 0 0
 			name "wall_4_8_s"
-			size 0.15 0.01 0.1
+			size 0.5 0.05 0.15
 			appearance PBRAppearance {
 				baseColor 0.1 0.55 0.5
 				roughness 1
@@ -811,10 +811,10 @@ Solid {
 		}
 
 		Wall {
-			translation  -0.825 -1.35  0
+			translation  -2.75 -4.5  0
 			rotation 1 0 0 0
 			name "wall_5_0_s"
-			size 0.15 0.01 0.1
+			size 0.5 0.05 0.15
 			appearance PBRAppearance {
 				baseColor 0.1 0.55 0.5
 				roughness 1
@@ -823,10 +823,10 @@ Solid {
 		}
 
 		Wall {
-			translation  -0.825 -0.75  0
+			translation  -2.75 -2.5  0
 			rotation 1 0 0 0
 			name "wall_5_4_s"
-			size 0.15 0.01 0.1
+			size 0.5 0.05 0.15
 			appearance PBRAppearance {
 				baseColor 0.1 0.55 0.5
 				roughness 1
@@ -835,10 +835,10 @@ Solid {
 		}
 
 		Wall {
-			translation  -0.825 -0.6000000000000001  0
+			translation  -2.75 -2.0  0
 			rotation 1 0 0 0
 			name "wall_5_5_s"
-			size 0.15 0.01 0.1
+			size 0.5 0.05 0.15
 			appearance PBRAppearance {
 				baseColor 0.1 0.55 0.5
 				roughness 1
@@ -847,10 +847,10 @@ Solid {
 		}
 
 		Wall {
-			translation  -0.825 -0.30000000000000004  0
+			translation  -2.75 -1.0  0
 			rotation 1 0 0 0
 			name "wall_5_7_s"
-			size 0.15 0.01 0.1
+			size 0.5 0.05 0.15
 			appearance PBRAppearance {
 				baseColor 0.1 0.55 0.5
 				roughness 1
@@ -859,10 +859,10 @@ Solid {
 		}
 
 		Wall {
-			translation  -0.825 -0.15000000000000013  0
+			translation  -2.75 -0.5  0
 			rotation 1 0 0 0
 			name "wall_5_8_s"
-			size 0.15 0.01 0.1
+			size 0.5 0.05 0.15
 			appearance PBRAppearance {
 				baseColor 0.1 0.55 0.5
 				roughness 1
@@ -871,10 +871,10 @@ Solid {
 		}
 
 		Wall {
-			translation  -0.975 -0.75  0
+			translation  -3.25 -2.5  0
 			rotation 1 0 0 0
 			name "wall_6_4_s"
-			size 0.15 0.01 0.1
+			size 0.5 0.05 0.15
 			appearance PBRAppearance {
 				baseColor 0.1 0.55 0.5
 				roughness 1
@@ -883,10 +883,10 @@ Solid {
 		}
 
 		Wall {
-			translation  -0.975 -0.44999999999999996  0
+			translation  -3.25 -1.5  0
 			rotation 1 0 0 0
 			name "wall_6_6_s"
-			size 0.15 0.01 0.1
+			size 0.5 0.05 0.15
 			appearance PBRAppearance {
 				baseColor 0.1 0.55 0.5
 				roughness 1
@@ -895,10 +895,10 @@ Solid {
 		}
 
 		Wall {
-			translation  -0.975 -0.30000000000000004  0
+			translation  -3.25 -1.0  0
 			rotation 1 0 0 0
 			name "wall_6_7_s"
-			size 0.15 0.01 0.1
+			size 0.5 0.05 0.15
 			appearance PBRAppearance {
 				baseColor 0.1 0.55 0.5
 				roughness 1
@@ -907,10 +907,10 @@ Solid {
 		}
 
 		Wall {
-			translation  -1.125 -0.9  0
+			translation  -3.75 -3.0  0
 			rotation 1 0 0 0
 			name "wall_7_3_s"
-			size 0.15 0.01 0.1
+			size 0.5 0.05 0.15
 			appearance PBRAppearance {
 				baseColor 0.1 0.55 0.5
 				roughness 1
@@ -919,10 +919,10 @@ Solid {
 		}
 
 		Wall {
-			translation  -1.125 -0.6000000000000001  0
+			translation  -3.75 -2.0  0
 			rotation 1 0 0 0
 			name "wall_7_5_s"
-			size 0.15 0.01 0.1
+			size 0.5 0.05 0.15
 			appearance PBRAppearance {
 				baseColor 0.1 0.55 0.5
 				roughness 1
@@ -931,10 +931,10 @@ Solid {
 		}
 
 		Wall {
-			translation  -1.125 -0.44999999999999996  0
+			translation  -3.75 -1.5  0
 			rotation 1 0 0 0
 			name "wall_7_6_s"
-			size 0.15 0.01 0.1
+			size 0.5 0.05 0.15
 			appearance PBRAppearance {
 				baseColor 0.1 0.55 0.5
 				roughness 1
@@ -943,10 +943,10 @@ Solid {
 		}
 
 		Wall {
-			translation  -1.125 -0.15000000000000013  0
+			translation  -3.75 -0.5  0
 			rotation 1 0 0 0
 			name "wall_7_8_s"
-			size 0.15 0.01 0.1
+			size 0.5 0.05 0.15
 			appearance PBRAppearance {
 				baseColor 0.1 0.55 0.5
 				roughness 1
@@ -955,10 +955,10 @@ Solid {
 		}
 
 		Wall {
-			translation  -1.275 -1.2  0
+			translation  -4.25 -4.0  0
 			rotation 1 0 0 0
 			name "wall_8_1_s"
-			size 0.15 0.01 0.1
+			size 0.5 0.05 0.15
 			appearance PBRAppearance {
 				baseColor 0.1 0.55 0.5
 				roughness 1
@@ -967,10 +967,10 @@ Solid {
 		}
 
 		Wall {
-			translation  -1.275 -0.75  0
+			translation  -4.25 -2.5  0
 			rotation 1 0 0 0
 			name "wall_8_4_s"
-			size 0.15 0.01 0.1
+			size 0.5 0.05 0.15
 			appearance PBRAppearance {
 				baseColor 0.1 0.55 0.5
 				roughness 1
@@ -979,10 +979,10 @@ Solid {
 		}
 
 		Wall {
-			translation  -1.275 -0.15000000000000013  0
+			translation  -4.25 -0.5  0
 			rotation 1 0 0 0
 			name "wall_8_8_s"
-			size 0.15 0.01 0.1
+			size 0.5 0.05 0.15
 			appearance PBRAppearance {
 				baseColor 0.1 0.55 0.5
 				roughness 1
@@ -991,10 +991,10 @@ Solid {
 		}
 
 		Wall {
-			translation  -1.425 -1.35  0
+			translation  -4.75 -4.5  0
 			rotation 1 0 0 0
 			name "wall_9_0_s"
-			size 0.15 0.01 0.1
+			size 0.5 0.05 0.15
 			appearance PBRAppearance {
 				baseColor 0.1 0.55 0.5
 				roughness 1
@@ -1003,10 +1003,10 @@ Solid {
 		}
 
 		Wall {
-			translation  -1.425 -1.05  0
+			translation  -4.75 -3.5  0
 			rotation 1 0 0 0
 			name "wall_9_2_s"
-			size 0.15 0.01 0.1
+			size 0.5 0.05 0.15
 			appearance PBRAppearance {
 				baseColor 0.1 0.55 0.5
 				roughness 1
@@ -1016,14 +1016,26 @@ Solid {
 	]
 }
 E-puck {
-  translation -1.425 -1.125 0.0248092
+  translation -4.75 -3.75 0.0248092
   rotation 0 0 1 4.71239
   controller "maze_nav"
   supervisor TRUE
-  customData "grid_size=10;cell_size=0.15;wall_color=0.1,0.55,0.5;floor_color=0.97,0.95,0.82"
+  customData "grid_size=10;cell_size=0.5;wall_color=0.1,0.55,0.5;floor_color=0.97,0.95,0.82"
   camera_width 256
   camera_height 192
-  camera_fieldOfView 1.0
+  # Wider than the proto default (0.84 rad / ~48deg), so a bit more of each
+  # side wall is visible in frame -- helps the color-fraction zone split see
+  # more context, not just a narrow forward sliver. Raised again to 1.4 after
+  # the color-fraction detector was found saturating near-solid-wall (~1.0)
+  # for most of a trial back when cells were 0.15m. Cells are now 0.5m (see
+  # DEFAULT_CELL), which changes the close-range geometry this was tuned
+  # against -- still unconfirmed against a fresh run at the new scale; check
+  # center_density in the CSV log actually ramps instead of saturating.
+  camera_fieldOfView 1.4
+  # Pitched down (positive angle around Y, per the E-puck proto's own
+  # "linear camera mode" reference) so the wall/floor boundary stays in
+  # frame at close range -- level-mounted, the view saturates to all-wall
+  # regardless of true distance. Not yet empirically tuned to an exact angle.
   camera_rotation 0 1 0 0.3
   turretSlot [
     Camera {
@@ -1045,6 +1057,6 @@ E-puck {
   ]
 }
 DEF TARGET_BALL Ball {
-  translation -0.825 -0.07499999999999996 0.030379
+  translation -2.75 -0.25 0.030379
   color 1 0 0
 }
