@@ -40,6 +40,12 @@ WALL_DENSITY_EPSILON = 0.005
 # A wall must be seen for this many consecutive frames before it's reported,
 # which debounces single-frame noise.
 WALL_CONSECUTIVE_FRAMES = 3
+# Separate, shorter debounce for the straight-ahead check specifically (see
+# vision_color.ColorWallDetector). Every collision in run_log_*.csv showed
+# center_density already unambiguous (0.75-1.0) for many frames before impact,
+# but the robot was still closing at WHEEL_SPEED with no margin to spare --
+# react on 2 confirming frames instead of 3.
+WALL_AHEAD_CONSECUTIVE_FRAMES = 2
 
 # Wall detection (right camera, brightness based).
 RIGHT_CAMERA_SPLIT_RATIO = 0.4

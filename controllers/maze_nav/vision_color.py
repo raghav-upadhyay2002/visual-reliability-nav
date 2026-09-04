@@ -35,7 +35,7 @@ not yet re-checked at the new scale.
 import cv2
 import numpy as np
 
-from config import WALL_CONSECUTIVE_FRAMES
+from config import WALL_CONSECUTIVE_FRAMES, WALL_AHEAD_CONSECUTIVE_FRAMES
 
 WALL_FRAC_THRESHOLD = 0.45
 HUE_TOLERANCE = 12
@@ -98,11 +98,19 @@ class ColorWallDetector:
 
         t = self.frac_threshold
 
-        if left_frac > t and center_frac > t and right_frac > t:
+        # "Ahead" means the center zone alone -- gating this on left AND
+        # right too (as the very first version did, mirroring vision.py)
+        # meant a robot rarely approaches dead-perpendicular enough for all
+        # three to clear the threshold at once, so wall_ahead almost never
+        # latched even with center saturated at 0.8+, and the robot drove
+        # straight into walls at full speed (see run_log_*.csv from before
+        # this fix -- every logged trial ended in "collided", never
+        # "success"/"timed_out").
+        if center_frac > t:
             self._center_count += 1
         else:
             self._center_count = 0
-        wall_ahead = self._center_count >= WALL_CONSECUTIVE_FRAMES
+        wall_ahead = self._center_count >= WALL_AHEAD_CONSECUTIVE_FRAMES
 
         if left_frac > t and right_frac < t:
             self._left_count += 1
