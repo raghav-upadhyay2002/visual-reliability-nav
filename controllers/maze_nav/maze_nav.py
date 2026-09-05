@@ -13,7 +13,7 @@ import os
 from controller import Supervisor
 import cv2
 
-from config import TARGET_RADIUS, COLLISION_THRESHOLD, MAX_TRIAL_SECONDS, RIGHT_CAMERA_SPLIT_RATIO
+from config import TARGET_RADIUS, COLLISION_THRESHOLD, RIGHT_CAMERA_SPLIT_RATIO
 from camera_utils import get_camera_bgr
 from vision import detect_target, detect_walls_status_right, WallDetector
 from vision_color import ColorWallDetector, detect_walls_status_right_color
@@ -105,10 +105,16 @@ def main():
 
     # Main control loop.
     while robot.step(timestep) != -1:
-        dist_to_target = math.dist(self_node.getPosition()[:2], target_pos[:2])
+        # Debugging-only ground truth (see trial_logger.LOG_HEADER) -- never
+        # fed into navigation, just logged so a trial's physical path can be
+        # inspected directly instead of inferred from dist_to_target alone.
+        robot_xy = self_node.getPosition()[:2]
+        robot_orientation = self_node.getOrientation()
+        robot_heading = math.atan2(robot_orientation[3], robot_orientation[0])
+
+        dist_to_target = math.dist(robot_xy, target_pos[:2])
         ps_values = [s.getValue() for s in ps_sensors]
         collided = any(v > COLLISION_THRESHOLD for v in ps_values)
-        timed_out = robot.getTime() > MAX_TRIAL_SECONDS
 
         # TEMP diagnostic: COLLISION_THRESHOLD=80 was an untuned guess (no
         # documented lookup table for this proto) -- print raw values every
@@ -116,9 +122,14 @@ def main():
         # values can be read off directly instead of guessed again.
         print("ps values:", [round(v, 1) for v in ps_values], "collided:", collided)
 
+        # No time limit -- for interactive/manual runs, stop it yourself in
+        # Webots when done watching. Removed alongside the loop-escape
+        # revert; without either a timeout or an escape mechanism, a trapped
+        # trial (see run_log_20260905_02{48,50,51}*.csv -- confirmed via
+        # dist_to_target autocorrelation and plotted robot_x/robot_y) will
+        # now run indefinitely with no automatic outcome.
         outcome = "success" if dist_to_target < TARGET_RADIUS else \
-                  "collided" if collided else \
-                  "timed_out" if timed_out else None
+                  "collided" if collided else None
 
         # Corrupt all three frames identically before any detector sees them --
         # a real degraded sensor would degrade every camera at once, not just
@@ -165,6 +176,7 @@ def main():
             round(start_xy[0], 4), round(start_xy[1], 4),
             round(target_xy[0], 4), round(target_xy[1], 4),
             corruption_type, corruption_severity,
+            round(robot_xy[0], 4), round(robot_xy[1], 4), round(robot_heading, 4),
         ])
 
         # Visualize the Canny edge map used for the wall density calculation.
