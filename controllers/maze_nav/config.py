@@ -24,15 +24,11 @@ BLUR_SIZE = 9
 #     an actual wall touch -- still needs one real-contact sample to pin down
 #     precisely; watch the printed ps values again once the robot can
 #     actually reach a wall on purpose.
-#   - MAX_TRIAL_SECONDS: sim-time timeout per trial, backstopping a robot
-#     that gets stuck without colliding or reaching the target. Raised from
-#     120s -> 300s alongside the 0.15m -> 0.5m cell-size increase (~3.3x more
-#     physical distance to cover at the same WHEEL_SPEED); not yet confirmed
-#     this is enough headroom for the longest paths on the biggest (10x10)
-#     mazes.
+#   - No trial timeout: removed for interactive/manual runs (there's no
+#     automatic termination for a stuck trial now -- stop it yourself in
+#     Webots).
 TARGET_RADIUS = 0.1
 COLLISION_THRESHOLD = 250
-MAX_TRIAL_SECONDS = 300.0
 
 # Wall detection (front camera, edge-density based).
 # Empirical cutoff: below this edge density, a zone is considered "wall very
@@ -78,9 +74,8 @@ RIGHT_WALL_BRIGHTNESS_THRESHOLD = 195.0
 # ~0.0205m wheel radius) -- still comfortably under the real e-puck's ~6.28
 # rad/s hardware ceiling, so this stays realistic for eventual sim-to-real
 # transfer. WALL_TURN_HOLD_FRAMES below was rescaled to match -- see its
-# comment; turning radius (WALL_FOLLOW_CURVE_FACTOR) and MAX_TRIAL_SECONDS
-# don't need adjustment for a speed change (see chat, geometry/threshold
-# derivations respectively).
+# comment; turning radius (WALL_FOLLOW_CURVE_FACTOR) doesn't need adjustment
+# for a speed change (see its own comment for the geometry derivation).
 WHEEL_SPEED = 5.0
 # Right-hand wall-following (see navigation.decide_velocities): when no wall
 # is detected on the right, curve right at this fraction of WHEEL_SPEED on

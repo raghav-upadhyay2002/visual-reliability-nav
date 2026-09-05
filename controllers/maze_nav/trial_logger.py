@@ -29,6 +29,14 @@ LOG_HEADER = [
     # eval-only, constant across a trial -- see corruption.py. 'clean' / 1 when
     # MAZE_NAV_CORRUPTION isn't set (i.e. every trial before this existed).
     'corruption_type', 'corruption_severity',
+    # debugging-only, from the supervisor -- ground-truth position/heading,
+    # never fed into navigation (same rule as dist_to_target/collided above).
+    # Added to directly see the robot's physical path (e.g. confirming a
+    # suspected orbit loop) instead of inferring it indirectly from
+    # dist_to_target. robot_heading is an approximate yaw extracted from
+    # getOrientation() for visualization -- good enough to see turning
+    # behavior, not validated against the robot's exact local forward axis.
+    'robot_x', 'robot_y', 'robot_heading',
 ]
 
 
