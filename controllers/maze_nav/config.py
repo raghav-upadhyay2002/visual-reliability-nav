@@ -48,6 +48,21 @@ WALL_CONSECUTIVE_FRAMES = 3
 # but the robot was still closing at WHEEL_SPEED with no margin to spare --
 # react on 2 confirming frames instead of 3.
 WALL_AHEAD_CONSECUTIVE_FRAMES = 2
+# Once any of wall_ahead/wall_left/wall_front_right triggers, hold it True for
+# this many extra frames regardless of the next reading. Without this, a
+# single-frame turn slightly reduces the density that triggered it (the wall
+# looks a bit smaller after turning even 32ms worth), which immediately reset
+# the debounce counter and snapped the robot straight back to full-speed-
+# straight one frame before it hit the wall (see run_log_20260904_222338.csv /
+# _222357.csv: wall_ahead=True for exactly one row, then False, then collided
+# a frame or two later). This is a fixed TIME (frames), but the turn rate
+# during a pivot (one wheel at 0, the other at WHEEL_SPEED) scales directly
+# with WHEEL_SPEED -- so raising WHEEL_SPEED without rescaling this would turn
+# further per hold (e.g. 3.0->5.0 would turn ~32deg -> ~54deg in the same 15
+# frames), risking overturning into the opposite wall. Rescaled 15 -> 9
+# (x 3.0/5.0) to hold the same ~32deg turn angle this was originally tuned
+# against; re-derive again if WHEEL_SPEED changes further.
+WALL_TURN_HOLD_FRAMES = 9
 
 # Wall detection (right camera, brightness based).
 RIGHT_CAMERA_SPLIT_RATIO = 0.4
@@ -59,7 +74,27 @@ RIGHT_CAMERA_SPLIT_RATIO = 0.4
 RIGHT_WALL_BRIGHTNESS_THRESHOLD = 195.0
 
 # Navigation.
-WHEEL_SPEED = 3.0
+# Raised 3.0 -> 5.0 rad/s (linear ~0.0615 -> ~0.1025 m/s at the e-puck's
+# ~0.0205m wheel radius) -- still comfortably under the real e-puck's ~6.28
+# rad/s hardware ceiling, so this stays realistic for eventual sim-to-real
+# transfer. WALL_TURN_HOLD_FRAMES below was rescaled to match -- see its
+# comment; turning radius (WALL_FOLLOW_CURVE_FACTOR) and MAX_TRIAL_SECONDS
+# don't need adjustment for a speed change (see chat, geometry/threshold
+# derivations respectively).
+WHEEL_SPEED = 5.0
+# Right-hand wall-following (see navigation.decide_velocities): when no wall
+# is detected on the right, curve right at this fraction of WHEEL_SPEED on
+# the right wheel (rather than driving straight, which would drift away from
+# the wall being hugged, or pivoting in place, which loses forward progress).
+# 0.4 produced a turning radius of ~0.06m (R = (axle/2)*(vL+vR)/(vL-vR), using
+# the e-puck's ~0.0205m wheel radius and ~0.052m axle) -- far smaller than the
+# ~0.225m corridor half-width at the current 0.5m cell size, so a robot that
+# started mid-corridor just circled forever without ever reaching a wall (see
+# run_log_20260904_222129.csv: wall_ahead/wall_right False for all 754 rows).
+# 0.85 -> R~=0.32m, comfortably past the corridor half-width so the search
+# curve actually sweeps into a wall; still an estimate from the geometry
+# above, not yet confirmed against a real run.
+WALL_FOLLOW_CURVE_FACTOR = 0.85
 
 # Spawn randomization (see spawn.py). Resting heights match the E-puck/Ball
 # proto geometry -- constant across every world regardless of grid/cell size

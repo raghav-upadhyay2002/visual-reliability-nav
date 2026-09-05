@@ -149,9 +149,7 @@ def main():
         # Check whether the red target is in view and which way it's offset.
         target_visible, target_direction, mask = detect_target(img_bgr_front)
 
-        left_velocity, right_velocity = decide_velocities(
-            wall_status, wall_status_right, target_visible, target_direction
-        )
+        left_velocity, right_velocity = decide_velocities(wall_status, wall_status_right)
         left_motor.setVelocity(left_velocity)
         right_motor.setVelocity(right_velocity)
 

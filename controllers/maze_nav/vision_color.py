@@ -35,7 +35,7 @@ not yet re-checked at the new scale.
 import cv2
 import numpy as np
 
-from config import WALL_CONSECUTIVE_FRAMES, WALL_AHEAD_CONSECUTIVE_FRAMES
+from config import WALL_CONSECUTIVE_FRAMES, WALL_AHEAD_CONSECUTIVE_FRAMES, WALL_TURN_HOLD_FRAMES
 
 WALL_FRAC_THRESHOLD = 0.45
 HUE_TOLERANCE = 12
@@ -83,6 +83,9 @@ class ColorWallDetector:
         self._center_count = 0
         self._left_count = 0
         self._right_count = 0
+        self._center_hold_remaining = 0
+        self._left_hold_remaining = 0
+        self._right_hold_remaining = 0
 
     def update(self, img_bgr):
         mask = _color_mask(img_bgr, self.wall_hue)
@@ -106,23 +109,52 @@ class ColorWallDetector:
         # straight into walls at full speed (see run_log_*.csv from before
         # this fix -- every logged trial ended in "collided", never
         # "success"/"timed_out").
-        if center_frac > t:
+        #
+        # All three checks below hold True for WALL_TURN_HOLD_FRAMES once
+        # triggered, regardless of the next reading -- without this, turning
+        # even one frame shrinks the density that triggered it (the wall
+        # looks a bit smaller after turning even 32ms worth), which
+        # immediately reset the debounce counter and snapped the robot
+        # straight back to full speed one frame before collision (see
+        # run_log_20260904_222338.csv / _222357.csv: wall_ahead True for
+        # exactly one row, then False, then collided a couple of frames
+        # later). The hold forces a real, multi-frame turn instead of a
+        # single flinch.
+        if self._center_hold_remaining > 0:
+            self._center_hold_remaining -= 1
+            wall_ahead = True
+        elif center_frac > t:
             self._center_count += 1
+            wall_ahead = self._center_count >= WALL_AHEAD_CONSECUTIVE_FRAMES
+            if wall_ahead:
+                self._center_hold_remaining = WALL_TURN_HOLD_FRAMES
         else:
             self._center_count = 0
-        wall_ahead = self._center_count >= WALL_AHEAD_CONSECUTIVE_FRAMES
+            wall_ahead = False
 
-        if left_frac > t and right_frac < t:
+        if self._left_hold_remaining > 0:
+            self._left_hold_remaining -= 1
+            wall_left = True
+        elif left_frac > t and right_frac < t:
             self._left_count += 1
+            wall_left = self._left_count >= WALL_CONSECUTIVE_FRAMES
+            if wall_left:
+                self._left_hold_remaining = WALL_TURN_HOLD_FRAMES
         else:
             self._left_count = 0
-        wall_left = self._left_count >= WALL_CONSECUTIVE_FRAMES
+            wall_left = False
 
-        if right_frac > t and left_frac < t:
+        if self._right_hold_remaining > 0:
+            self._right_hold_remaining -= 1
+            wall_front_right = True
+        elif right_frac > t and left_frac < t:
             self._right_count += 1
+            wall_front_right = self._right_count >= WALL_CONSECUTIVE_FRAMES
+            if wall_front_right:
+                self._right_hold_remaining = WALL_TURN_HOLD_FRAMES
         else:
             self._right_count = 0
-        wall_front_right = self._right_count >= WALL_CONSECUTIVE_FRAMES
+            wall_front_right = False
 
         return {
             'wall_ahead': wall_ahead,
